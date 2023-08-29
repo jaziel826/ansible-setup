@@ -3,9 +3,14 @@
   tags: always
 
 - block:
-  - import_tasks: nrpe.yml
-  - import_tasks: ufw.yml
-  - import_tasks: qemu-agent.yml
+  #- import_tasks: nrpe.yml
+  #- import_tasks: ufw.yml
+  #- import_tasks: qemu-agent.yml
+  - include_tasks: crowdsec.yml
+    when:
+      - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+      - crowdsec is defined
+      - crowdsec == true
 
   - include_tasks: unattended_upgrades.yml
     when:

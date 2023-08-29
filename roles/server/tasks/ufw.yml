@@ -29,18 +29,41 @@
     - dns_server is defined
     - dns_server == true
 
-# k8s
-- name: ufw | k8s | allow api server (master)
+- name: ufw | dns | allow dns tls
   tags: ufw
   ufw:
-    comment: k8s master api server
+    comment: dns
     rule: allow
-    port: '6443'
-    proto: tcp
-    src: 172.16.249.0/24
+    port: '853'
+    proto: udp
   when:
-    - k8s_master is defined
-    - k8s_master == true
+    - dns_server is defined
+    - dns_server == true
+
+
+- name: ufw | dns | allow dns tls
+  tags: ufw
+  ufw:
+    comment: dns
+    rule: allow
+    port: '853'
+    proto: tcp
+  when:
+    - dns_server is defined
+    - dns_server == true
+
+# k8s
+- name: ufw | vpn | allow wireguard
+  tags: ufw
+  ufw:
+    comment: wirguard vpn allowed
+    rule: allow
+    port: '51820'
+    proto: udp
+    src: 10.0.10.0/24
+  when:
+    - vpn is defined
+    - vpn  == true
 
 - name: ufw | k8s | allow etcd server client api (master)
   tags: ufw

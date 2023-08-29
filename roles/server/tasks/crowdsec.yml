@@ -1,0 +1,20 @@
+- name: Gather package facts
+  package_facts:
+    manager: apt
+  register: package_facts_result
+- name: install crowdsec repo
+  become_user: velociraptor
+  shell: curl -s https://packagecloud.io/install/repositories/crowdsec/crowdsec/script.deb.sh | sudo bash
+  tags: "repo"
+  when: '"crowdsec" not in ansible_facts.packages'
+
+- name: update apt cache
+  tags: install
+  apt: 
+    update_cache: true
+
+- name: Install the package "crowdsec"
+  tags: install
+  ansible.builtin.apt:
+    name: crowdsec
+    state: present
