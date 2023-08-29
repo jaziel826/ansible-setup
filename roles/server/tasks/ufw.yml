@@ -29,6 +29,7 @@
     - dns_server is defined
     - dns_server == true
 
+<<<<<<< HEAD
 - name: ufw | dns | allow dns tls
   tags: ufw
   ufw:
@@ -64,6 +65,20 @@
   when:
     - vpn is defined
     - vpn  == true
+=======
+# k8s
+- name: ufw | k8s | allow api server (master)
+  tags: ufw
+  ufw:
+    comment: k8s master api server
+    rule: allow
+    port: '6443'
+    proto: tcp
+    src: 172.16.249.0/24
+  when:
+    - k8s_master is defined
+    - k8s_master == true
+>>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 
 - name: ufw | k8s | allow etcd server client api (master)
   tags: ufw

@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 - name: user | velociraptor | create
   tags: users
   user:
     name: velociraptor
     system: yes
+=======
+>>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 - name: users | velociraptor | add public key
   tags: dotfiles,velociraptor,ssh,ssh-keys,users
   authorized_key:
