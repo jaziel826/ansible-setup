@@ -1,0 +1,216 @@
+- name: users | jaziel | create group
+  tags: groups,jaziel,users
+  group:
+    name: jaziel
+    state: present
+
+- name: users | jaziel | create user
+  tags: jaziel,sudo,users
+  user:
+    name: jaziel
+    group: jaziel
+    groups: adm,ansible,{{ sudo_group }}
+    state: present
+    comment: "Jaziel Amadiz"
+    password: "{{ jaziel_passwd }}"
+    shell: /bin/bash
+
+- name: users | jaziel | jaziel | add sudoers file
+  tags: jaziel,settings,simone,sudo,system,users
+  copy:
+    src: users/sudoers_jaziel
+    dest: /etc/sudoers.d/jaziel
+    owner: root
+    group: root
+    mode: 0440
+
+- name: users | jaziel | create .ssh directory
+  tags: dotfiles,jaziel,ssh,users
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+    owner: jaziel
+    group: jaziel
+    mode: 0700
+  with_items:
+    - { dir: '/home/jaziel/.ssh' }
+
+- name: users | jaziel | add public key
+  tags: dotfiles,jaziel,ssh,ssh-keys,users
+  authorized_key:
+    user: jaziel
+    key: "{{ item }}"
+  with_file:
+    - users/jaziel/ssh/jaziel_id_ed25519.pub
+
+- name: users | jaziel | create config directories
+  tags: dotfiles,jaziel,tmux,users,vim,zsh
+  file:
+    path: /home/jaziel/{{ item.dir }}
+    state: directory
+    owner: jaziel
+    group: jaziel
+    mode: 0700
+  with_items:
+    - { dir: '.bash' }
+    - { dir: '.config' }
+    - { dir: '.config/htop' }
+    - { dir: '.config/mc' }
+    - { dir: '.tmux' }
+    - { dir: '.tmux/config' }
+    - { dir: '.tmux/plugins' }
+    - { dir: '.vim' }
+    - { dir: '.vim/autoload' }
+    - { dir: '.vim/bundle' }
+    - { dir: '.vim/colors' }
+    - { dir: '.vim/ftplugin' }
+    - { dir: '.zsh' }
+
+- name: users | jaziel | copy tmux config (server version)
+  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
+  copy:
+    src: users/jaziel/tmux/tmux.conf.server
+    dest: /home/jaziel/.tmux.conf
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  when: "'server' not in group_names"
+
+- name: users | jaziel | copy tmux config (workstation version)
+  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
+  copy:
+    src: users/jaziel/tmux/tmux.conf.workstation
+    dest: /home/jaziel/.tmux.conf
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  when: "'server' in group_names"
+
+- name: users | jaziel | copy dotfiles
+  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
+  copy:
+    src: users/jaziel/{{ item.src }}
+    dest: /home/jaziel/{{ item.dest }}
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  with_items:
+    - { src: 'bash/bash_aliases', dest: '.bash/bash_aliases' }
+    - { src: 'bash/bash_profile', dest: '.bash_profile' }
+    - { src: 'bash/bash_prompt', dest: '.bash/bash_prompt' }
+    - { src: 'bash/bash_functions', dest: '.bash/bash_functions' }
+    - { src: 'bash/bashrc', dest: '.bashrc' }
+    - { src: 'bash/profile', dest: '.profile' }
+    - { src: 'git/gitconfig', dest: '.gitconfig' }
+    - { src: 'htop/htoprc', dest: '.config/htop/htoprc' }
+    - { src: 'inputrc', dest: '.inputrc' }
+    - { src: 'mc/mc.ini', dest: '.config/mc/ini' }
+    - { src: 'vim/vimrc', dest: '.vimrc' }
+    - { src: 'zsh/zshrc', dest: '.zshrc' }
+
+- name: users | jaziel | clone tmux-completion plugin repository
+  tags: dotfiles,jaziel,users,tmux
+  git:
+    repo: https://github.com/srsudar/tmux-completion.git
+    dest: /home/jaziel/.tmux/plugins/completion
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | jaziel | clone tmux-continuum plugin repository
+  tags: dotfiles,jaziel,users,tmux
+  git:
+    repo: https://github.com/tmux-plugins/tmux-continuum
+    dest: /home/jaziel/.tmux/plugins/continuum
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | jaziel | clone tmux-resurrect plugin repository
+  tags: dotfiles,jaziel,users,tmux
+  git:
+    repo: https://github.com/tmux-plugins/tmux-resurrect
+    dest: /home/jaziel/.tmux/plugins/resurrect
+    force: yes
+  notify: update_tmux_plugin_perms
+
+- name: users | jaziel | copy individual zsh config files
+  tags: dotfiles,jaziel,users,zsh
+  copy:
+    src: users/jaziel/zsh/{{ item.src }}
+    dest: /home/jaziel/.zsh/{{ item.src }}
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  with_items:
+    - { src: 'aliases.zsh' }
+    - { src: 'bindkey.zsh' }
+    - { src: 'completion.zsh' }
+    - { src: 'exports.zsh' }
+    - { src: 'functions.zsh' }
+    - { src: 'history.zsh' }
+    - { src: 'path.zsh' }
+    - { src: 'plugins.zsh' }
+    - { src: 'prompt.zsh' }
+    - { src: 'setopt.zsh' }
+    - { src: 'theming.zsh' }
+
+- name: users | jaziel | copy vim ftype files
+  tags: dotfiles,jaziel,users,vim
+  copy:
+    src: users/jaziel/vim/{{ item.src }}
+    dest: /home/jaziel/.vim/ftplugin/{{ item.src }}
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  with_items:
+    - { src: 'cmake.vim' }
+    - { src: 'cpp.vim' }
+    - { src: 'html.vim' }
+    - { src: 'perl.vim' }
+    - { src: 'python.vim' }
+    - { src: 'ruby.vim' }
+    - { src: 'sql.vim' }
+    - { src: 'xml.vim' }
+
+- name: users | jaziel | copy vim color files
+  tags: dotfiles,jaziel,users,vim
+  copy:
+    src: users/jaziel/vim/{{ item.src }}
+    dest: /home/jaziel/.vim/colors/{{ item.src }}
+    owner: jaziel
+    group: jaziel
+    mode: 0600
+  with_items:
+    - { src: 'bubblegum-256-dark.vim' }
+    - { src: 'darktango.vim' }
+    - { src: 'jellybeans.vim' }
+    - { src: 'xoria256.vim' }
+    - { src: 'zenburn.vim' }
+
+- name: users | jaziel | install pathogen
+  tags: dotfiles,jaziel,users,vim
+  copy:
+    src: users/jaziel/vim/{{ item.src }}
+    dest: "{{ item.dest }}"
+    owner: jaziel
+    group: jaziel
+    mode: 0700
+  with_items:
+    - { src: 'pathogen.vim', dest: '/home/jaziel/.vim/autoload/pathogen.vim' }
+
+- name: users | jaziel | checkout git repositories
+  tags: git,users,jaziel
+  become: yes
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    force: yes
+  with_items:
+    - { repo: 'https://github.com/ctrlpvim/ctrlp.vim.git', dest: '/home/jaziel/.vim/bundle/ctrlp.vim' }
+    - { repo: 'https://github.com/davidhalter/jedi-vim.git', dest: '/home/jaziel/.vim/bundle/jedi-vim' }
+    - { repo: 'https://github.com/pearofducks/ansible-vim', dest: '/home/jaziel/.vim/bundle/ansible-vim' }
+    - { repo: 'https://github.com/rhysd/vim-grammarous.git', dest: '/home/jaziel/.vim/bundle/vim-grammarous' }
+    - { repo: 'https://github.com/ron89/thesaurus_query.vim', dest: '/home/jaziel/.vim/bundle/thesaurus_query' }
+    - { repo: 'https://github.com/scrooloose/nerdtree.git', dest: '/home/jaziel/.vim/bundle/nerdtree' }
+    - { repo: 'https://github.com/tpope/vim-obsession.git', dest: '/home/jaziel/.vim/bundle/vim-obsession' }
+    - { repo: 'https://github.com/vim-syntastic/syntastic.git', dest: '/home/jaziel/.vim/bundle/syntastic' }
+  notify: update_vim_bundle_perms

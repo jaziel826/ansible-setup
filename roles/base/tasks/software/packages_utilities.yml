@@ -1,0 +1,44 @@
+- name: install tailscale (Debian)
+  tags: "package,system,settings"
+  shell: curl -fsSL https://tailscale.com/install.sh | sh
+  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+- name: system setup | utilities | install utility packages
+  tags: packages,system,settings
+  package:
+    state: latest
+    name:
+      # - at
+      - colordiff
+      - curl
+      - "{{ dns_utils_package}}"
+      - htop
+      - iotop
+      - "{{ lm_sensors_package }}"
+      - lsof
+      - mosh
+      - ncdu
+      - neofetch
+      - net-tools
+      - "{{ nfs_client_package }}"
+      - nmap
+      - "{{ rename_package }}"
+      - rsync
+      - screen
+      - sshfs
+      - exa
+      - tmux
+      - traceroute
+      - "{{ vim_package }}"
+      - wget
+      - whois
+      - tailscale
+
+- name: system setup | utilities | install man-pages (arch)
+  tags: packages,system,settings
+  pacman:
+    state: latest
+    name:
+      - man-db
+      - man-pages
+  when: ansible_distribution == "Archlinux"

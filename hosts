@@ -1,0 +1,16 @@
+[lxc]
+nextcloud.home.local
+maria.home.local
+firefly.home.local
+office.home.local
+monitor.home.local
+vpn.home.local
+[VM]
+
+[servers]
+pve.home.local
+
+[workstation]
+workstation1.mydomain.com
+workstation2.mydomain.com
+workstation3.mydomain.com
