@@ -9,7 +9,7 @@ test.home.local
 
 [VM]
 
-[servers]
+[server]
 pve.home.local
 test.home.local
 

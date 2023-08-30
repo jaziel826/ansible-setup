@@ -20,7 +20,7 @@
   tags: base
   become: true
   roles:
-    - lxc
+    - base
 
 # - hosts: workstation
 #   tags: workstation
