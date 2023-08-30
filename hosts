@@ -5,11 +5,13 @@ firefly.home.local
 office.home.local
 monitor.home.local
 vpn.home.local
+test.home.local
 
 [VM]
 
 [servers]
 pve.home.local
+test.home.local
 
 [workstation]
 workstation1.mydomain.com
