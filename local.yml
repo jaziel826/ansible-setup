@@ -20,11 +20,7 @@
   tags: base
   become: true
   roles:
-<<<<<<< HEAD
     - base
-=======
-    - lxc
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 
 # - hosts: workstation
 #   tags: workstation
