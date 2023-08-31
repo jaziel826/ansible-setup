@@ -20,6 +20,7 @@
       - ncdu
       - neofetch
       - net-tools
+      - python-requests-doc
       - "{{ nfs_client_package }}"
       - nmap
       - "{{ rename_package }}"
