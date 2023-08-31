@@ -1,3 +1,9 @@
+- name: users | ansible | create group
+  tags: groups,ansibleusers
+  group:
+    name: ansible 
+    state: present
+
 - name: users | jaziel | create group
   tags: groups,jaziel,users
   group:
@@ -9,7 +15,7 @@
   user:
     name: jaziel
     group: jaziel
-    groups: "{{ sudo_group }}"
+    groups: adm,ansible,{{ sudo_group }}
     state: present
     comment: "Jaziel Amadiz"
     password: "{{ jaziel_passwd }}"
