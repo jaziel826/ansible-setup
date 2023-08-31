@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # - name: notify healthchecks.io that the job ran
 #   uri:
 #     url: https://hc-ping.com/{{ healthcheck_uuid }}
@@ -15,19 +14,9 @@
     #chat_id: "{{ telegram_chat_id }}"
     #msg_format: markdown
     #msg: "✔️  Ansible provision finished on *{{ ansible_hostname }}*"
-=======
 - name: notify healthchecks.io that the job ran
   uri:
     url: https://hc-ping.com/{{ healthcheck_uuid }}
   changed_when: False
   when: healthcheck_uuid is defined
 
-- name: send completion notification via telegram
-  tags: always
-  telegram:
-    token: "{{ telegram_token }}"
-    chat_id: "{{ telegram_chat_id }}"
-    msg_format: markdown
-    msg: "✔️  Ansible provision finished on *{{ ansible_hostname }}*"
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
-  changed_when: False

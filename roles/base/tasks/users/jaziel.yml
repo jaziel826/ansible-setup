@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 - name: users | ansible | create group
   tags: groups,ansibleusers
   group:
     name: ansible 
     state: present
-
-=======
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 - name: users | jaziel | create group
   tags: groups,jaziel,users
   group:

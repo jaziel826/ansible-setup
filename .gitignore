@@ -1,3 +1,2 @@
 # ---> Ansible
 *.retry
-roles/base/vars/main.yml
