@@ -1,5 +1,5 @@
 ---
-branch: master
+branch: development
 
 ansible_cron_minute: "40"
 ssh_port: 22
