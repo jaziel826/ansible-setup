@@ -11,7 +11,7 @@ def send_alert(data, title, priority, tags):
     response = requests.post(url, data=data, headers=headers)
     
     if response.status_code == 200:
-        print("Alert sent successfully!")
+        print(0)
     else:
         print("Failed to send alert.")
 
