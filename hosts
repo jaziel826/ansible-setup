@@ -5,17 +5,11 @@ firefly.home.local
 office.home.local
 monitor.home.local
 vpn.home.local
-<<<<<<< HEAD
 test.home.local
 
 [VM]
 
 [server]
-=======
-[VM]
-
-[servers]
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 pve.home.local
 
 [workstation]
