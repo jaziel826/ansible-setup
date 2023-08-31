@@ -2,6 +2,9 @@
   - name: send failure notification via ntfy.sh
     script: alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
     tags: always
+    args:
+      executable: python3
+
 #     shell:
 #       token: "{{ telegram_token }}"
 #       chat_id: "{{ telegram_chat_id }}"
@@ -16,6 +19,9 @@
     - name: send failure notification via ntfy.sh
       script: alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
       tags: always
+      args:
+        executable: python3
+
       changed_when: False
 
 - name: ansible job failed, clear cache later on to trigger another provision run
