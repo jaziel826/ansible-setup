@@ -1,11 +1,7 @@
 - block:
-  - name: send failure notification via telegram
-    shell: curl -H "Title: Ansible Pull Failed" -H "Priority: max " -d "⚠️  Ansible provision failed on *{{ ansible_hostname }}*\n\n
-         *Task*:  {{ ansible_failed_task.name }}\n
-         *Action*: {{ ansible_failed_task.action }}\n
-         *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}```"
-
-#     tags: always
+  - name: send failure notification via ntfy.sh
+    script: alert.py "Task:\ {{ ansible_failed_task.name }} Action:\ {{ ansible_failed_task.action }} Error Message:\ {{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
+    tags: always
 #     shell:
 #       token: "{{ telegram_token }}"
 #       chat_id: "{{ telegram_chat_id }}"
@@ -17,23 +13,14 @@
     changed_when: False
 
   rescue:
-    - name: send failure notification via telegram
+    - name: send failure notification via ntfy.sh
+      script: alert.py "Task:\ {{ ansible_failed_task.name }} Action:\ {{ ansible_failed_task.action }} Error Message:\ {{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
       tags: always
-      shell: curl -H "Title: Ansible Pull Failed" -H "Priority: max " -d "⚠️  Ansible provision failed on *{{ ansible_hostname }}*\n\n
-         *Task*:  {{ ansible_failed_task.name }}\n
-         *Action*: {{ ansible_failed_task.action }}\n
-         *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}```"
-      telegram:
-        token: "{{ telegram_token }}"
-        chat_id: "{{ telegram_chat_id }}"
-        msg_format: markdown
-        msg: "⚠️  Ansible provision failed on *{{ ansible_hostname }}*\n\n
-          The specific error couldn't be shown, check the log."
       changed_when: False
 
 - name: ansible job failed, clear cache later on to trigger another provision run
   become: yes
   at:
-    command: "if ! pgrep -f ansible-pull >/dev/null; then rm -rf /home/simone/.ansible; fi"
+    command: "if ! pgrep -f ansible-pull >/dev/null; then rm -rf /home/velociraptor/.ansible; fi"
     count: 60
     units: minutes

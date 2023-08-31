@@ -6,7 +6,7 @@
 
 - name: send completion notification via ntfy
   tags: always
-  shell: curl -H "Title: Ansible Pull succes" -H "Priority: low " -d "✔️  Ansible provision finished on *{{ ansible_hostname }}*"
+  script: alert.py "Ansible Pull Succes" "Ansible-Pull" "low" "+1" 
     #token: "{{ telegram_token }}"
     #chat_id: "{{ telegram_chat_id }}"
     #msg_format: markdown
