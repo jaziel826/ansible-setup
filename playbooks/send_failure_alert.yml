@@ -1,6 +1,6 @@
 - block:
   - name: send failure notification via ntfy.sh
-    script: files/alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
+    script: alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
     tags: always
 #     shell:
 #       token: "{{ telegram_token }}"
@@ -14,7 +14,7 @@
 
   rescue:
     - name: send failure notification via ntfy.sh
-      script: files/alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
+      script: alert.py "Error Message:{{ ansible_failed_result | to_nice_json }}" "Ansible Pull Failed" "max" "warning" 
       tags: always
       changed_when: False
 
