@@ -1,3 +1,8 @@
+- name: user | velociraptor | create
+  tags: user
+  user:
+    name: velociraptor
+    system: yes
 - name: users | velociraptor | add public key
   tags: dotfiles,velociraptor,ssh,ssh-keys,users
   authorized_key:
