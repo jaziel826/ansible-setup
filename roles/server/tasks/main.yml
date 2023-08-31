@@ -3,7 +3,6 @@
   tags: always
 
 - block:
-<<<<<<< HEAD
   #- import_tasks: nrpe.yml
   #- import_tasks: ufw.yml
   #- import_tasks: qemu-agent.yml
@@ -12,11 +11,6 @@
       - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
       - crowdsec is defined
       - crowdsec == true
-=======
-  - import_tasks: nrpe.yml
-  - import_tasks: ufw.yml
-  - import_tasks: qemu-agent.yml
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 
   - include_tasks: unattended_upgrades.yml
     when:
