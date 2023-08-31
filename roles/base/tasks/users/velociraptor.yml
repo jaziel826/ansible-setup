@@ -1,5 +1,5 @@
 - name: user | velociraptor | create
-  tags: user
+  tags: users
   user:
     name: velociraptor
     system: yes
