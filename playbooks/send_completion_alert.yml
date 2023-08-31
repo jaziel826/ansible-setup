@@ -6,7 +6,7 @@
 
 - name: send completion notification via ntfy
   tags: always
-  script: alert.py "Ansible Pull Succes" "Ansible-Pull" "low" "+1" 
+  script: files/alert.py "Ansible Pull Succes" "Ansible-Pull" "low" "+1" 
     #token: "{{ telegram_token }}"
     #chat_id: "{{ telegram_chat_id }}"
     #msg_format: markdown
