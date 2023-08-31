@@ -58,7 +58,6 @@
     mode: 0700
   with_items:
     - { dir: '.bash' }
-<<<<<<< HEAD
 #     - { dir: '.config' }
 #     - { dir: '.config/htop' }
 #     - { dir: '.tmux' }
@@ -126,75 +125,6 @@
 #     dest: /home/jaziel/.tmux/plugins/resurrect
 #     force: yes
 #   notify: update_tmux_plugin_perms
-=======
-    - { dir: '.config' }
-    - { dir: '.config/htop' }
-    - { dir: '.tmux' }
-    - { dir: '.tmux/config' }
-    - { dir: '.tmux/plugins' }
-    - { dir: '.vim' }
-    - { dir: '.vim/autoload' }
-    - { dir: '.vim/bundle' }
-    - { dir: '.vim/colors' }
-    - { dir: '.vim/ftplugin' }
-
-- name: users | jaziel | copy tmux config (server version)
-  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
-  copy:
-    src: users/jaziel/tmux/tmux.conf.server
-    dest: /home/jaziel/.tmux.conf
-    owner: jaziel
-    group: jaziel
-    mode: 0600
-  when: "'server' not in group_names"
-
-- name: users | jaziel | copy tmux config (workstation version)
-  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
-  copy:
-    src: users/jaziel/tmux/tmux.conf.workstation
-    dest: /home/jaziel/.tmux.conf
-    owner: jaziel
-    group: jaziel
-    mode: 0600
-  when: "'server' in group_names"
-
-- name: users | jaziel | copy dotfiles
-  tags: dotfiles,users,jaziel,tmux,users,vim,zsh
-  copy:
-    src: users/jaziel/{{ item.src }}
-    dest: /home/jaziel/{{ item.dest }}
-    owner: jaziel
-    group: jaziel
-    mode: 0600
-  with_items:
-    - { src: 'bash/bashrc', dest: '.bashrc' }
-    - { src: 'git/gitconfig', dest: '.gitconfig' }
-    - { src: 'vim/vimrc', dest: '.vimrc' }
-
-- name: users | jaziel | clone tmux-completion plugin repository
-  tags: dotfiles,jaziel,users,tmux
-  git:
-    repo: https://github.com/srsudar/tmux-completion.git
-    dest: /home/jaziel/.tmux/plugins/completion
-    force: yes
-  notify: update_tmux_plugin_perms
-
-- name: users | jaziel | clone tmux-continuum plugin repository
-  tags: dotfiles,jaziel,users,tmux
-  git:
-    repo: https://github.com/tmux-plugins/tmux-continuum
-    dest: /home/jaziel/.tmux/plugins/continuum
-    force: yes
-  notify: update_tmux_plugin_perms
-
-- name: users | jaziel | clone tmux-resurrect plugin repository
-  tags: dotfiles,jaziel,users,tmux
-  git:
-    repo: https://github.com/tmux-plugins/tmux-resurrect
-    dest: /home/jaziel/.tmux/plugins/resurrect
-    force: yes
-  notify: update_tmux_plugin_perms
->>>>>>> b06f81a (changed users, pacakages, inventory, etc.)
 
 # - name: users | jaziel | copy individual zsh config files
 #   tags: dotfiles,jaziel,users,zsh
