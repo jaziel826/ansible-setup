@@ -5,7 +5,7 @@ firefly.home.local
 office.home.local
 monitor.home.local
 vpn.home.local
-test.home.local
+ntfy.home.local
 
 [VM]
 
