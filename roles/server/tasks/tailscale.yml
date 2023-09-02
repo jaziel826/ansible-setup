@@ -1,0 +1,63 @@
+- hosts: "all"
+  become: true
+  tasks:
+  roles:
+    - role: artis3n.tailscale
+      vars:
+        # Example pulling the API key from the env vars on the host running Ansible
+       tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
+         #       tailscale_up_skip: true
+#   - name: Gather package facts
+#     package_facts:
+#       manager: apt
+#     register: package_facts_result
+#   
+#   - name: install tailscale (Debian)
+#     become_user: velociraptor
+#     tags: "apt,package,install"
+#     shell: curl -fsSL https://tailscale.com/install.sh | sh
+#     when: '"tailscale" not in ansible_facts.packages'
+#   - name: start tailscale
+#     become_user: root
+#     service:
+#       name: tailscaled
+#       state: started
+# 
+#   - name: check authentication status
+#     block:
+#       - ansible.builtin.set_fact:
+#           _auth_needed: false
+#   
+#       - register: _status
+#         changed_when: false
+#         ansible.builtin.command:
+#           argv:
+#             - 'tailscale'
+#             - 'status'
+#             - '--json'
+#   
+#       - when: _fields.BackendState == "NeedsLogin"
+#         ansible.builtin.set_fact:
+#           _auth_needed: true
+#         vars:
+#           _fields: "{{ _status.stdout | from_json }}"
+#   
+#   - name: authenticate if needed
+#     when: _auth_needed
+#     block:
+#       - name: get authorization key
+#         register: _authkey
+#         ansible.builtin.pause:
+#           prompt: "Enter Tailscale authorization key"
+#           echo: yes
+#   
+#       - name: authorize machine
+#         ansible.builtin.command:
+#           argv:
+#             - 'tailscale'
+#             - 'up'
+#             - '--authkey'
+#             - "{{ _authkey.user_input }}"
+#   
+  
+  

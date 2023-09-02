@@ -1,0 +1,46 @@
+- name: Check if file is not a symbolic link
+  stat:
+    path: $HOME/.bashrc
+  register: file_stat
+
+- name: back up .bashrc
+  become_user: jaziel
+  shell: mv $HOME/.bashrc $HOME/.bashrc.bk
+  when: file_stat.stat.islink is not defined or file_stat.stat.islink == false
+
+- name: stow dotfiles
+  become_user: jaziel
+  tags: "install,stow"
+  stow:
+    state: latest
+    package: "{{ item }}"
+    dir: $HOME/.dotfiles/files
+    target: $HOME
+  with_items:  
+    - alacritty
+    - btop
+    - lf
+    - lobster
+    - mako
+    - networkmanager-dmenu
+    - nvim
+    - polybar
+    - polybar_old
+    - rofi
+    - starship
+    - sway
+    - swaync
+    - ulauncher
+    - wall
+    - waybar
+    - wlogout
+    - tmux
+    - vim
+    - hypr
+    - bash
+    - foot
+    - ctpv
+    - wluma
+    - fuzzel
+    - zellij
+
