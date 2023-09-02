@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # options
-ANSIBLEUSER="<ansible-user-name>"
+ANSIBLEUSER="velociraptor"
 BRANCH="{{ branch | default('master') }}"
 LOGFILE="/var/log/ansible.log"
-REPO="<https://url-to-git-server/ansible.git>"
-VAULT_KEY="</path/to/ansible_vault_key">
+REPO="https://github.com/jaziel826/Proxmox-Ansible.git"
+VAULT_KEY="/.vault_key.txt"
 PRECMD="sudo systemd-inhibit --who='ansible-pull' --why='provisioning'"
 
 # check if ansible-pull is already running, and if not, run it
