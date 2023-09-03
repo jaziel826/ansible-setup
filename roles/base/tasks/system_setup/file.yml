@@ -8,7 +8,7 @@
 #   shell: mv $HOME/.bashrc $HOME/.bashrc.bk
 #   when: file_stat.stat.islink is not defined or file_stat.stat.islink == false
 - name: file | create .dot |
-  tags: dotfiles,jaziel,ssh,users
+  tags: dotfiles,stows
   file:
     path: $HOME/.config/.dot
     state: directory
@@ -17,6 +17,7 @@
     mode: 0700
 
 - name: cp stow files
+  tags: stow
   copy:
     src: config/"{{ stow_config }}"
     dest: ~/.dot 
