@@ -4,6 +4,11 @@ branch: main
 ansible_cron_minute: "30"
 ssh_port: 22
 ssh_users: "jaziel velociraptor"
+stow_config:
+  - vim
+  - tmux
+  - lf
+  - bash
 
 # platform-specific
 linode_instance: false

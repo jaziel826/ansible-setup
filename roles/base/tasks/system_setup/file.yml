@@ -12,35 +12,8 @@
   become_user: jaziel
   tags: "install,stow"
   stow:
-    state: latest
-    package: "{{ item }}"
-    dir: $HOME/.dotfiles/files
+    state: surpress
+    package: "{{ stow_config }}"
+    dir: config/
     target: $HOME
-  with_items:  
-    - alacritty
-    - btop
-    - lf
-    - lobster
-    - mako
-    - networkmanager-dmenu
-    - nvim
-    - polybar
-    - polybar_old
-    - rofi
-    - starship
-    - sway
-    - swaync
-    - ulauncher
-    - wall
-    - waybar
-    - wlogout
-    - tmux
-    - vim
-    - hypr
-    - bash
-    - foot
-    - ctpv
-    - wluma
-    - fuzzel
-    - zellij
 

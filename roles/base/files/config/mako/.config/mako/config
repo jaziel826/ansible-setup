@@ -1,0 +1,11 @@
+# Colors
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+border-radius=6
+progress-color=over #89b4fa
+max-visible=10
+
+[urgency=high]
+border-color=#fab387

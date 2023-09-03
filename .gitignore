@@ -1,2 +1,3 @@
 # ---> Ansible
 *.retry
+roles/base/files/config/tmux/.tmux/

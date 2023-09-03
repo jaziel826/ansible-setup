@@ -1,0 +1,33 @@
+swaylock -d --screenshots --clock --indicator-idle-visible \
+--indicator-radius 100 \
+--indicator-thickness 5 \
+--ignore-empty-password \
+--bs-hl-color d65d0e \
+--ring-color 8fbcbb \
+--ring-clear-color d08770\
+--ring-caps-lock-color bf616a \
+--ring-ver-color 88c0d0 \
+--ring-wrong-color bf616a \
+--key-hl-color ebcb8b \
+--text-color d8dee9 \
+--text-clear-color ebcb8b \
+--text-caps-lock-color d08770 \
+--text-ver-color 81a1c1 \
+--text-wrong-color bf616a \
+--font JetBrains Mono \
+--line-color 00000000 \
+--line-clear-color 00000000 \
+--line-caps-lock-color 00000000 \
+--line-ver-color 00000000 \
+--line-wrong-color 00000000 \
+--inside-color 00000088 \
+--inside-clear-color 00000088 \
+--inside-ver-color 00000088 \
+--inside-wrong-color 00000088 \
+--separator-color 00000000 \
+--fade-in \
+--effect-scale 0.5 \
+--effect-blur 7x3 \
+--effect-scale 2 \
+--effect-vignette 0.5:0.5 \
+"$@"

@@ -1,0 +1,42 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+# Place this file inside the .config folder of your home directory.
+# If you already have a config file, append the contents of this file
+# to it to preserve your previous settings.
+
+# Conflux colorscheme for Alacritty
+# by Julio Cabria, https://github.com/Julynx
+
+
+colors:
+  # Default colors
+  primary:
+    background: '0x2C2C2C'
+    foreground: '0xFFFFFF'
+
+   #Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x020202'
+    cursor: '0xFFEECC'
+
+   #Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xCC4343'
+    green:   '0x88CC43'
+    yellow:  '0xCCAA43'
+    blue:    '0x4365CC'
+    magenta: '0xCC43AA'
+    cyan:    '0x43CCCC'
+    white:   '0xFFFFFF'
+
+   #Bright colors
+  bright:
+    black:   '0x000000'
+    red:     '0xFE1010'
+    green:   '0x88FE10'
+    yellow:  '0xFEC310'
+    blue:    '0x104BFE'
+    magenta: '0xFE10C3'
+    cyan:    '0x10FEFE'
+    white:   '0xFFFFFF'

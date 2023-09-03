@@ -48,16 +48,16 @@
   with_file:
     - users/jaziel/ssh/jaziel_id_ed25519.pub
 
-- name: users | jaziel | create config directories
-  tags: dotfiles,jaziel,tmux,users,vim,zsh
-  file:
-    path: /home/jaziel/{{ item.dir }}
-    state: directory
-    owner: jaziel
-    group: jaziel
-    mode: 0700
-  with_items:
-    - { dir: '.bash' }
+# - name: users | jaziel | create config directories
+#   tags: dotfiles,jaziel,tmux,users,vim,zsh
+#   file:
+#     path: /home/jaziel/{{ item.dir }}
+#     state: directory
+#     owner: jaziel
+#     group: jaziel
+#     mode: 0700
+#   with_items:
+#     - { dir: '.bash' }
 #     - { dir: '.config' }
 #     - { dir: '.config/htop' }
 #     - { dir: '.tmux' }

@@ -1,0 +1,11 @@
+max-visible=10
+layer=top
+font=CaskaydiaCove Nerd Font 10
+background-color=#282d38
+text-color=#D8DEE9
+border-color=#22262f
+border-radius=6
+max-icon-size=48
+default-timeout=10000
+anchor=top-right
+margin=20

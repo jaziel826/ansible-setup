@@ -11,6 +11,7 @@ ntfy.home.local
 
 [server]
 pve.home.local
+ntfy.home.local
 
 [workstation]
 workstation1.mydomain.com
