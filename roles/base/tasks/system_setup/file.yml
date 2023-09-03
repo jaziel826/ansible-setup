@@ -12,7 +12,7 @@
   become_user: jaziel
   tags: "install,stow"
   stow:
-    state: surpress
+    state: supress
     package: "{{ stow_config }}"
     dir: config/
     target: $HOME
