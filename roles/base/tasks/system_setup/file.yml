@@ -17,7 +17,7 @@
     mode: 0700
 
 - name: cp stow files
-  cp:
+  copy:
     src: config/"{{ stow_config }}"
     dest: ~/.dot 
 - name: stow dotfiles
