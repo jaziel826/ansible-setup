@@ -68,19 +68,21 @@
   become: false
   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
-- name: Link dotfiles into home folder.
-  tags: stow
-  file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}/{{ folder_contents.files }}"
-    dest: "{{ dotfiles_home }}/{{ item }}/{{ folder_contents.files }}"
-    state: link
-    mode: 0744
-  become: false
-  with_items: "{{ dotfiles_files }}"
+# - name: Link dotfiles into home folder.
+#   tags: stow
+#   file:
+#     src: "{{ dotfiles_repo_local_destination }}/{{ item }}/{{ folder_contents.files }}"
+#     dest: "{{ dotfiles_home }}/{{ item }}/{{ folder_contents.files }}"
+#     state: link
+#     mode: 0744
+#   become: false
+#   with_items: "{{ dotfiles_files }}"
 
-#- name: file | stow dotfiles |
-#  shell: stow --stow --target=$HOME --dir=$HOME/.config/.dot/
-# - name: stow dotfiles
+- name: file | stow dotfiles |
+  shell: stow --stow --target=$HOME --dir="{{ dotfiles_repo_local_destination }}/{{ item }}/"
+  become_user: jaziel
+  with_items: "{{ dotfiles_files }}"
+ - name: stow dotfiles
 #   become_user: jaziel
 #   tags: "install,stow"
 #   stow:
