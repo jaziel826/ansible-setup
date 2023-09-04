@@ -4,6 +4,10 @@ branch: main
 ansible_cron_minute: "30"
 ssh_port: 22
 ssh_users: "jaziel velociraptor"
+dotfiles_repo: "https://github.com/jaziel826/configs.git"
+dotfiles_repo_version: main
+dotfiles_repo_accept_hostkey: false
+dotfiles_repo_local_destination: "~/.configs/.dots"
 stow_config:
   - 'vim'
   - 'tmux'

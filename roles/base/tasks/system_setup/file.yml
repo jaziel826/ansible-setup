@@ -16,20 +16,28 @@
     owner: jaziel
     group: jaziel
     mode: 0700
+- name: Ensure dotfiles repository is cloned locally.
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+  become: false
 
-- name: cp stow files
-  become_user: jaziel
-  tags: stow
-  copy:
-    src: "config/{{ item }}/"
-    dest: $HOME/.config/.dot 
-    remote_src: yes
-    mode: directory_mode
-#     dirs: true
-#     recursive: true
-#     rsync_opts:
-#       - "--mkpath"
-  with_items: "{{ stow_config }}"
+# 
+# - name: cp stow files
+#   become_user: jaziel
+#   tags: stow
+#   copy:
+#     src: "config/{{ item }}/"
+#     dest: $HOME/.config/.dot 
+#     remote_src: yes
+#     mode: directory_mode
+# #     dirs: true
+# #     recursive: true
+# #     rsync_opts:
+# #       - "--mkpath"
+#   with_items: "{{ stow_config }}"
 
 - name: Ensure all configured dotfiles are links.
   command: "ls -F {{ dotfiles_home }}/{{ item }}"
