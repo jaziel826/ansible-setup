@@ -23,7 +23,7 @@
     dest: "{{ dotfiles_repo_local_destination }}"
     version: "{{ dotfiles_repo_version }}"
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
-  become: false
+  become_user: jaziel
 
 # 
 # - name: cp stow files
@@ -56,7 +56,7 @@
     recurse: yes
     file_type: file
   register: folder_contents
-  become: false
+  become_user: jaziel
   with_items: "{{ dotfiles_files }}"
 
 - name: Remove existing dotfiles file if a replacement is being linked.
@@ -65,7 +65,7 @@
     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
     state: absent
   when: "'@' not in item.1.stdout"
-  become: false
+  become_user: jaziel
   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
 # - name: Link dotfiles into home folder.
@@ -75,7 +75,7 @@
 #     dest: "{{ dotfiles_home }}/{{ item }}/{{ folder_contents.files }}"
 #     state: link
 #     mode: 0744
-#   become: false
+#   become_user: jaziel
 #   with_items: "{{ dotfiles_files }}"
 
 - name: file | stow dotfiles |
