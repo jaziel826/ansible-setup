@@ -24,6 +24,7 @@
     src: "config/{{ item }}/"
     dest: $HOME/.config/.dot 
     remote_src: yes
+    mode: directory_mode
 #     dirs: true
 #     recursive: true
 #     rsync_opts:
