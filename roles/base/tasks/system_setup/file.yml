@@ -16,7 +16,6 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-    remote_src: true 
 
 - name: cp stow files
   become_user: jaziel
@@ -25,6 +24,7 @@
     src: config/"{{ item }}"
     dest: $HOME/.config/.dot 
     recursive: yes
+    remote_src: true 
   with_items: "{{ stow_config }}"
 
 - name: stow dotfiles
