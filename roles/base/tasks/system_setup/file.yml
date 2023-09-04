@@ -40,14 +40,15 @@
 # #       - "--mkpath"
 #   with_items: "{{ stow_config }}"
 
-- name: Ensure all configured dotfiles are links.
-  tags: stow
-  command: "ls -F {{ dotfiles_home }}/{{ item }}"
-  register: existing_dotfile_info
-  failed_when: false
-  check_mode: false
-  changed_when: false
-  with_items: "{{ dotfiles_files }}"
+- name: Check if file is not a symbolic link
+  stat:
+    path: $HOME/.bashrc
+  register: file_stat
+
+- name: back up .bashrc
+  become_user: jaziel
+  shell: mv $HOME/.bashrc $HOME/.bashrc.bk
+  when: file_stat.stat.islink is not defined or file_stat.stat.islink == false
 
 # - name: List files in the folder
 #   tags: stow
