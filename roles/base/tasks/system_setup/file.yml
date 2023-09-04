@@ -20,11 +20,12 @@
 - name: cp stow files
   become_user: jaziel
   tags: stow
-  copy:
+  synchronize:
     src: "config/{{ item }}/"
     dest: $HOME/.config/.dot 
-    mode: directory_mode
+    dirs: true
   with_items: "{{ stow_config }}"
+
 - name: Ensure all configured dotfiles are links.
   command: "ls -F {{ dotfiles_home }}/{{ item }}"
   register: existing_dotfile_info
