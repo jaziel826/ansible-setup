@@ -20,13 +20,14 @@
 - name: cp stow files
   become_user: jaziel
   tags: stow
-  synchronize:
+  copy:
     src: "config/{{ item }}/"
     dest: $HOME/.config/.dot 
-    dirs: true
-    recursive: true
-    rsync_opts:
-      - "--mkpath"
+    remote_src: yes
+#     dirs: true
+#     recursive: true
+#     rsync_opts:
+#       - "--mkpath"
   with_items: "{{ stow_config }}"
 
 - name: Ensure all configured dotfiles are links.
