@@ -6,14 +6,14 @@ ssh_port: 22
 ssh_users: "jaziel velociraptor"
 dotfiles_repo: "https://github.com/jaziel826/configs.git"
 dotfiles_repo_version: main
-dotfiles_home: "~"
+dotfiles_home: "$HOME"
 dotfiles_repo_accept_hostkey: false
-dotfiles_repo_local_destination: "~/.config/.dots"
+dotfiles_repo_local_destination: "$HOME/.config/.dots"
 dotfiles_files:
-  - 'vim'
-  - 'tmux'
-  - 'lf'
-  - 'bash'
+  - bash
+  - vim
+  - tmux
+  - lf
 
 # platform-specific
 linode_instance: false
