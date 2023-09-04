@@ -82,7 +82,7 @@
   shell: stow --stow --target=$HOME --dir="{{ dotfiles_repo_local_destination }}/{{ item }}/"
   become_user: jaziel
   with_items: "{{ dotfiles_files }}"
- - name: stow dotfiles
+# - name: stow dotfiles
 #   become_user: jaziel
 #   tags: "install,stow"
 #   stow:
