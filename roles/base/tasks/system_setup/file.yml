@@ -19,8 +19,8 @@
 - name: cp stow files
   tags: stow
   copy:
-    src: config/"{{ stow_config }}"
-    dest: ~/.dot 
+    src: files/config/"{{ stow_config }}"
+    dest: $HOME/.config/.dot 
 - name: stow dotfiles
   become_user: jaziel
   tags: "install,stow"
