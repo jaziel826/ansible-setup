@@ -78,16 +78,16 @@
 #   become_user: jaziel
 #   with_items: "{{ dotfiles_files }}"
 
-- name: file | stow dotfiles |
-  shell: stow --stow --target=$HOME --dir="{{ dotfiles_repo_local_destination }}/{{ item }}/"
-  become_user: jaziel
-  with_items: "{{ dotfiles_files }}"
-# - name: stow dotfiles
+# - name: file | stow dotfiles |
+#   shell: stow --stow --target=$HOME --dir="{{ dotfiles_repo_local_destination }}/{{ item }}/"
 #   become_user: jaziel
-#   tags: "install,stow"
-#   stow:
-#     state: supress
-#     package: "{{ item }}"
-#     dir: $HOME/.config/.dot
-#     target: $HOME
-#   with_items: "{{ stow_config }}"
+#   with_items: "{{ dotfiles_files }}"
+- name: stow dotfiles
+  become_user: jaziel
+  tags: "install,stow"
+  stow:
+    state: supress
+    package: "{{ item }}"
+    dir: "{{ dotfiles_repo_local_destination }}"
+    target: $HOME
+  with_items: "{{ dotfiles_files }}"
