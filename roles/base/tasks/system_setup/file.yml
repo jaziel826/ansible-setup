@@ -56,6 +56,7 @@
     recurse: yes
     file_type: file
   register: folder_contents
+  become: false
   with_items: "{{ dotfiles_files }}"
 
 - name: Remove existing dotfiles file if a replacement is being linked.
@@ -64,6 +65,7 @@
     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
     state: absent
   when: "'@' not in item.1.stdout"
+  become: false
   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
 - name: Link dotfiles into home folder.
