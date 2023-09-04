@@ -25,9 +25,32 @@
     dest: $HOME/.config/.dot 
     mode: directory_mode
   with_items: "{{ stow_config }}"
+- name: Ensure all configured dotfiles are links.
+  command: "ls -F {{ dotfiles_home }}/{{ item }}"
+  register: existing_dotfile_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items: "{{ dotfiles_files }}"
 
-- name: file | stow dotfiles |
-  shell: stow --stow --target=$HOME --dir=$HOME/.config/.dot
+- name: Remove existing dotfiles file if a replacement is being linked.
+  file:
+    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
+    state: absent
+  when: "'@' not in item.1.stdout"
+  with_indexed_items: "{{ existing_dotfile_info.results }}"
+
+- name: Link dotfiles into home folder.
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ dotfiles_home }}/{{ item }}"
+    state: link
+    mode: 0644
+  become: false
+  with_items: "{{ dotfiles_files }}"
+
+#- name: file | stow dotfiles |
+#  shell: stow --stow --target=$HOME --dir=$HOME/.config/.dot/
 # - name: stow dotfiles
 #   become_user: jaziel
 #   tags: "install,stow"

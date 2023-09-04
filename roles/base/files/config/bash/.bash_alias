@@ -1,0 +1,9 @@
+alias ls='exa --all --long --icons --color=always --group-directories-first'
+alias cat='bat'
+alias v='nvim '
+alias pc='protonvpn-cli connect'
+alias pr='protonvpn-cli reconnect'
+alias zj='zellij'
+alias lob='lobster'
+
+
