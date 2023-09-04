@@ -23,14 +23,17 @@
   copy:
     src: "config/{{ item }}/"
     dest: $HOME/.config/.dot 
+    mode: directory_mode
   with_items: "{{ stow_config }}"
 
-- name: stow dotfiles
-  become_user: jaziel
-  tags: "install,stow"
-  stow:
-    state: supress
-    package: "{{ item }}"
-    dir: $HOME/.config/.dot
-    target: $HOME
-  with_items: "{{ stow_config }}"
+- name: file | stow dotfiles |
+  shell: stow --stow --target=$HOME --dir=$HOME/.config/.dot
+# - name: stow dotfiles
+#   become_user: jaziel
+#   tags: "install,stow"
+#   stow:
+#     state: supress
+#     package: "{{ item }}"
+#     dir: $HOME/.config/.dot
+#     target: $HOME
+#   with_items: "{{ stow_config }}"
