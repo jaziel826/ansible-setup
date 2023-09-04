@@ -25,7 +25,7 @@
     dest: $HOME/.config/.dot 
     dirs: true
     recursive: true
-    rsyc_opts:
+    rsync_opts:
       - "--mkpath"
   with_items: "{{ stow_config }}"
 
