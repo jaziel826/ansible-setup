@@ -21,9 +21,8 @@
   become_user: jaziel
   tags: stow
   copy:
-    src: files/config/"{{ items }}"
+    src: files/config/"{{ stow_config }}"
     dest: $HOME/.config/.dot 
-    loop: "{{ stow_config }}"
 - name: stow dotfiles
   become_user: jaziel
   tags: "install,stow"
