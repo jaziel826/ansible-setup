@@ -24,7 +24,6 @@
     src: config/"{{ item }}"/
     dest: $HOME/.config/.dot 
     recursive: yes
-    remote_src: true 
   with_items: "{{ stow_config }}"
 
 - name: stow dotfiles
