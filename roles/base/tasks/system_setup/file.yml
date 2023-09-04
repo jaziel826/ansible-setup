@@ -21,7 +21,7 @@
   become_user: jaziel
   tags: stow
   copy:
-    src: config/"{{ item }}"/
+    src: "config/{{ item }}/"
     dest: $HOME/.config/.dot 
     recursive: yes
   with_items: "{{ stow_config }}"
