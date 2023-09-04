@@ -30,7 +30,7 @@
   tags: "install,stow"
   stow:
     state: supress
-    package: "{{ stow_config }}"
+    package: "{{ item }}"
     dir: $HOME/.config/.dot
     target: $HOME
-
+  with_items: "{{ stow_config }}"
