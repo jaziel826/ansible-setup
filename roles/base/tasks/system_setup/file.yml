@@ -89,7 +89,7 @@
   become_user: jaziel
   tags: "install,stow"
   stow:
-    state: supress
+    state: latest
     package: "{{ item }}"
     dir: "{{ dotfiles_repo_local_destination }}"
     target: $HOME
