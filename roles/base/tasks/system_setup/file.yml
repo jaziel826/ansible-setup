@@ -49,6 +49,13 @@
   changed_when: false
   with_items: "{{ dotfiles_files }}"
 
+- name: List files in the folder
+  find:
+    paths: "{{ dotfiles_repo_local_destination }}/{{ item }}/"
+    recurse: yes
+    file_type: file
+  register: folder_contents
+
 - name: Remove existing dotfiles file if a replacement is being linked.
   tags: stow
   file:
@@ -60,10 +67,10 @@
 - name: Link dotfiles into home folder.
   tags: stow
   file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-    dest: "{{ dotfiles_home }}/{{ item }}"
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}/{{ folder_contents.files }}"
+    dest: "{{ dotfiles_home }}/{{ item }}/{{ folder_contents.files }}"
     state: link
-    mode: 0644
+    mode: 0744
   become: false
   with_items: "{{ dotfiles_files }}"
 
