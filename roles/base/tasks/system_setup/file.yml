@@ -50,6 +50,7 @@
   with_items: "{{ dotfiles_files }}"
 
 - name: List files in the folder
+  tags: stow
   find:
     paths: "{{ dotfiles_repo_local_destination }}/{{ item }}/"
     recurse: yes
