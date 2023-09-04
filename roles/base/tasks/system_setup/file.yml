@@ -49,24 +49,24 @@
   changed_when: false
   with_items: "{{ dotfiles_files }}"
 
-- name: List files in the folder
-  tags: stow
-  find:
-    paths: "{{ dotfiles_repo_local_destination }}/{{ item }}/"
-    recurse: yes
-    file_type: file
-  register: folder_contents
-  become_user: jaziel
-  with_items: "{{ dotfiles_files }}"
+# - name: List files in the folder
+#   tags: stow
+#   find:
+#     paths: "{{ dotfiles_repo_local_destination }}/{{ item }}/"
+#     recurse: yes
+#     file_type: file
+#   register: folder_contents
+#   become_user: jaziel
+#   with_items: "{{ dotfiles_files }}"
 
-- name: Remove existing dotfiles file if a replacement is being linked.
-  tags: stow
-  file:
-    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
-    state: absent
-  when: "'@' not in item.1.stdout"
-  become_user: jaziel
-  with_indexed_items: "{{ existing_dotfile_info.results }}"
+# - name: Remove existing dotfiles file if a replacement is being linked.
+#   tags: stow
+#   file:
+#     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
+#     state: absent
+#   when: "'@' not in item.1.stdout"
+#   become_user: jaziel
+#   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
 # - name: Link dotfiles into home folder.
 #   tags: stow
