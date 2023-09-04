@@ -17,6 +17,7 @@
     group: jaziel
     mode: 0700
 - name: Ensure dotfiles repository is cloned locally.
+  tags: stow
   git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local_destination }}"
@@ -40,6 +41,7 @@
 #   with_items: "{{ stow_config }}"
 
 - name: Ensure all configured dotfiles are links.
+  tags: stow
   command: "ls -F {{ dotfiles_home }}/{{ item }}"
   register: existing_dotfile_info
   failed_when: false
@@ -48,6 +50,7 @@
   with_items: "{{ dotfiles_files }}"
 
 - name: Remove existing dotfiles file if a replacement is being linked.
+  tags: stow
   file:
     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
     state: absent
@@ -55,6 +58,7 @@
   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
 - name: Link dotfiles into home folder.
+  tags: stow
   file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
