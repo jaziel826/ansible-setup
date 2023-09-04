@@ -41,11 +41,13 @@
 #   with_items: "{{ stow_config }}"
 
 - name: Check if file is not a symbolic link
+  tags: stow
   stat:
     path: $HOME/.bashrc
   register: file_stat
 
 - name: back up .bashrc
+  tags: stow
   become_user: jaziel
   shell: mv $HOME/.bashrc $HOME/.bashrc.bk
   when: file_stat.stat.islink is not defined or file_stat.stat.islink == false
