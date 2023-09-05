@@ -1,7 +1,3 @@
-- hosts: "all"
-  become: true
-  tasks:
-  roles:
     - role: artis3n.tailscale
       vars:
         # Example pulling the API key from the env vars on the host running Ansible
