@@ -1,17 +1,19 @@
 [lxc]
-nextcloud.home.local
+ubuntu-nc.home.local
 maria.home.local
 firefly.home.local
-office.home.local
-monitor.home.local
+onlyoffice.home.local
+kuma.home.local
 vpn.home.local
 ntfy.home.local
-kuma.home.local
 [VM]
 
 [server]
 pve.home.local
 ntfy.home.local
+kuma.home.local
+onlyoffice.home.local
+ubuntu-nc.home.local
 
 [workstation]
 workstation1.mydomain.com
