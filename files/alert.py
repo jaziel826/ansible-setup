@@ -2,7 +2,7 @@ import sys
 import requests
 
 def send_alert(data, title, priority, tags):
-    url = "https://ntfy.sh/Ansible"
+    url = "https://ntfy.digecloud.work/Ansible"
     headers = {
         "Title": title,
         "Priority": priority,
