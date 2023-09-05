@@ -1,8 +1,3 @@
-- name: install tailscale (Debian)
-  tags: "package,system,settings"
-  shell: curl -fsSL https://tailscale.com/install.sh | sh
-  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
-
 - name: system setup | utilities | install utility packages
   tags: packages,system,settings
   package:
@@ -32,7 +27,6 @@
       - "{{ vim_package }}"
       - wget
       - whois
-      - tailscale
       - stow
 
 - name: system setup | utilities | install man-pages (arch)
