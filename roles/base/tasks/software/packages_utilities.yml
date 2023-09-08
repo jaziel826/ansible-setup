@@ -8,7 +8,6 @@
       - curl
       - htop
       - iotop
-      - "{{ lm_sensors_package }}"
       - lsof
       - mosh
       - ncdu
