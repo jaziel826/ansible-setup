@@ -1,9 +1,0 @@
-amd_microcode_package: amd-ucode
-cron_package: cronie
-dns_utils_package: bind-tools
-lm_sensors_package: lm_sensors
-openssh_package: openssh
-openssh_service: sshd
-sftp_path: /usr/lib/ssh/sftp-server
-sudo_group: wheel
-vim_package: gvim
