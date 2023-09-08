@@ -16,9 +16,9 @@
       when: ansible_distribution in ["Debian", "Ubuntu"]
     - name: pre-run | update_cache (openSUSE)
       tags: always
-      zypper:
-        update_cache: true
-        change_when: False
+      zypper: update_cache=yes
+      change_when: False
+      when: ansible_distribution == "OpenSuse"
 
 # run roles
 - hosts: all
