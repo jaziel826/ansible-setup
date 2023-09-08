@@ -14,7 +14,7 @@
   user:
     name: jaziel
     group: jaziel
-    groups: adm,ansible,{{ sudo_group }}
+    groups: ansible,{{ sudo_group }}
     state: present
     comment: "Jaziel Amadiz"
     password: "{{ jaziel_passwd }}"
