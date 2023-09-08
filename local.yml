@@ -17,7 +17,7 @@
 
     - name: pre-run | update_cache (openSUSE)
       shell: zypper ref
-      when: ansible_distribution == "openSUSE"
+      when: ansible_distribution == "openSUSE Tumbleweed"
 #       tags: always
 #       zypper: update_cache=yes
 #       change_when: False
