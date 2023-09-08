@@ -17,6 +17,7 @@ ubuntu-nc.home.local
 ubuntu-docker.home.local
 
 [workstation]
+ThinkPad.home.local
 workstation1.mydomain.com
 workstation2.mydomain.com
 workstation3.mydomain.com
