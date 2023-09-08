@@ -1,5 +1,5 @@
-autofs_master_config: /etc/autofs/auto.master
-autofs_nfs_config: /etc/autofs/auto.nfs
+autofs_master_config: /etc/auto.master.d/auto.master
+autofs_nfs_config: /etc/auto.nfs
 cryptsetup_package: cryptsetup
 cups_package: cups
 font_fira_mono_package: otf-fira-mono
