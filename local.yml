@@ -16,9 +16,7 @@
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
     - name: pre-run | update_cache (openSUSE)
-      zypper_repository:
-      repo: '*'
-      runrefresh: true
+      shell: zypper ref
       when: ansible_distribution == "openSUSE"
 #       tags: always
 #       zypper: update_cache=yes
