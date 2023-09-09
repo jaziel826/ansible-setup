@@ -2,7 +2,7 @@
   tags: bitwarden,packages,flatpak,workstation-packages
   become_user: jaziel
   flatpak:
-    name: flathub com.bitwarden.desktop
+    name: com.bitwarden.desktop
     method: user
     state: present
   when: bitwarden is defined and bitwarden == true
