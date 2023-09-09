@@ -3,7 +3,6 @@
   become: true
   zypper:
     name: firefox
-    allow_vendor_change: true
     state: latest
   when: firefox is defined and firefox == true
 

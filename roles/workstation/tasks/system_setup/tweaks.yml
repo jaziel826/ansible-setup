@@ -20,7 +20,7 @@
   package:
     name: snapd
     state: latest
-  when: ansible_distribution != "Archlinux"
+  when: ansible_distribution != ["Archlinux", "openSUSE Tumbleweed"]
 
 # Ensure core snap is installed
 - name: system setup | tweaks | install/update core snap
@@ -28,7 +28,7 @@
   snap:
     name:  core
     state: present
-  when: ansible_distribution != "Archlinux"
+  when: ansible_distribution != ["Archlinux", "openSUSE Tumbleweed"]
 
 
 # distro-specific tasks for arch

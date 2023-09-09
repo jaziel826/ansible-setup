@@ -1,0 +1,8 @@
+- name: software | protonvpn-gui | install package
+  tags: packages,protonvpn-gui,workstation-packages
+  become: true
+  zypper:
+    name: protonvpn-gui
+    state: latest
+  when: protonvpn-gui is defined and protonvpn-gui == true
+
