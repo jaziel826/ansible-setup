@@ -1,6 +1,6 @@
-- name: users | jay | remove preinstalled clutter from home directory
+- name: users | jaziel | remove preinstalled clutter from home directory
   file:
-    path: /home/jay/{{ item }}
+    path: /home/jaziel/{{ item }}
     state: absent
   with_items:
     - examples.desktop
@@ -13,20 +13,20 @@
     - Templates
     - Videos
 
-- name: users | jay | create personal config directories
-  tags: dotfiles,dotfiles-jay
+- name: users | jaziel | create personal config directories
+  tags: dotfiles,dotfiles-jaziel
   file:
-    path: /home/jay/{{ item.dir }}
+    path: /home/jaziel/{{ item.dir }}
     state: directory
-    owner: jay
-    group: jay
+    owner: jaziel
+    group: jaziel
     mode: 0700
   with_items:
     - { dir: .config }
     - { dir: .config/autostart }
-    - { dir: .config/bpytop }
-    - { dir: .config/gtk-3.0 }
-    - { dir: .config/terminator }
+      #    - { dir: .config/bpytop }
+      #- { dir: .config/gtk-3.0 }
+      #- { dir: .config/terminator }
     - { dir: .local }
     - { dir: .local/share }
     - { dir: .local/share/applications }
@@ -34,42 +34,42 @@
     - { dir: desktop }
     - { dir: documents }
     - { dir: downloads }
-    - { dir: projects }
+    - { dir: repo }
     - { dir: templates }
 
-- name: users | jay | copy user-dirs.dirs
-  tags: dotfiles,dotfiles-jay
+- name: users | jaziel | copy user-dirs.dirs
+  tags: dotfiles,dotfiles-jaziel
   copy:
-    src: users/jay/user-dirs.dirs
-    dest: /home/jay/.config/user-dirs.dirs
-    owner: jay
-    group: jay
+    src: users/jaziel/user-dirs.dirs
+    dest: /home/jaziel/.config/user-dirs.dirs
+    owner: jaziel
+    group: jaziel
     mode: 0600
   notify: update_xdg
 
-- name: users | jay | copy personal config files
-  tags: dotfiles,dotfiles-jay
+- name: users | jaziel | copy personal config files
+  tags: dotfiles,dotfiles-jaziel
   copy:
-    src: users/jay/{{ item.src }}
-    dest: /home/jay/{{ item.dest }}
-    owner: jay
-    group: jay
+    src: users/jaziel/{{ item.src }}
+    dest: /home/jaziel/{{ item.dest }}
+    owner: jaziel
+    group: jaziel
     mode: 0600
   with_items:
-    - { src: 'asunder', dest: '.asunder' }
-    - { src: 'bpytop.conf', dest: '.config/bpytop/bpytop.conf' }
-    - { src: 'directory_bookmarks', dest: '.config/gtk-3.0/bookmarks' }
-    - { src: 'gvimrc', dest: '.gvimrc' }
-    - { src: 'linode-cli', dest: '.config/linode-cli' }
-    - { src: 'mimeapps.list', dest: '.config/mimeapps.list' }
+    #- { src: 'asunder', dest: '.asunder' }
+      #- { src: 'bpytop.conf', dest: '.config/bpytop/bpytop.conf' }
+      #- { src: 'directory_bookmarks', dest: '.config/gtk-3.0/bookmarks' }
+      #- { src: 'gvimrc', dest: '.gvimrc' }
+      #- { src: ' user-dirs.dirs', dest: '.config/user-dirs.dirs' }
+      #- { src: 'mimeapps.list', dest: '.config/mimeapps.list' }
     - { src: 'ssh_client_config', dest: '.ssh/config' }
-    - { src: 'terminator_config', dest: '.config/terminator/config' }
+      #- { src: 'terminator_config', dest: '.config/terminator/config' }
 
-- name: users | jay | copy profile image
-  tags: dotfiles,dotfiles-jay
-  copy:
-    src: users/jay/profile_image.png
-    dest: /var/lib/AccountsService/icons/jay.png
-    owner: root
-    group: root
-    mode: 0644
+# - name: users | jaziel | copy profile image
+#   tags: dotfiles,dotfiles-jaziel
+#   copy:
+#     src: users/jaziel/profile_image.png
+#     dest: /var/lib/AccountsService/icons/jaziel.png
+#     owner: root
+#     group: root
+#     mode: 0644

@@ -1,0 +1,1 @@
+/mnt/truenas/vorta -fstype=nfs4,rw truenas.local:/mnt/ssd-storage/docker/vorta

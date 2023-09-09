@@ -1,1 +1,1 @@
-/mnt/truenas /etc/autofs.nfs --ghost --timeout=60
+/mnt/truenas/ /etc/auto.nfs --timeout=120 --ghost

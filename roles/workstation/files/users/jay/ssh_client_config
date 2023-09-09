@@ -1,74 +1,50 @@
-##################################################################
-# general config                                                 #
-##################################################################
+Host potato
+	Hostname 10.0.10.2
+	User jaziel
+	IdentityFile ~/.ssh/dell_id
+	AddKeysToAgent yes
+Host *.home.local
+    IdentityFile ~/.ssh/jaziel_id_ed25519
+    User jaziel
+	AddKeysToAgent yes
+Host ssh.smallpotato.party
+  ProxyCommand /usr/bin/cloudflared access ssh --hostname %h
+  IdentityFile ~/.ssh/dell_id
+  User jaziel
 
-Host *
-    ServerAliveInterval 15
-    ServerAliveCountMax 5
+ Host pfsense
+   Hostname 100.72.85.17
+   User jaziel
+   IdentityFile ~/.ssh/id_pfsense
+   AddKeysToAgent yes
+   Port 2222
+Host skyflake
+  Hostname 5.161.88.48
+  User jaziel
+  IdentityFile ~/.ssh/hetzner_ed25519
+  AddKeysToAgent yes 
+  Port 2222
+Host github
+  Hostname github.com
+  IdentityFile ~/.ssh/git_ed25519
+Host gitea
+  Hostname gitea.home.local
+  IdentityFile ~/.ssh/git_ed25519
+#Host cfpipe-ssh.smallpotato.party
+#  HostName ssh.smallpotato.party
+#  ProxyCommand /usr/bin/cloudflared access ssh --hostname %h
+#  IdentityFile ~/.cloudflared/ssh.smallpotato.party-cf_key
+#  CertificateFile ~/.cloudflared/ssh.smallpotato.party-cf_key-cert.pub
+#  User jaziel826
+#Host ssh.smallpotato.party
+#  ProxyCommand bash -c '/usr/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %r@cfpipe-ssh.smallpotato.party >&2 <&1'
 
-##################################################################
-# home machines                                                  #
-##################################################################
+#Host cfpipe-ssh.smallpotato.party
+#  HostName ssh.smallpotato.party
+#  ProxyCommand /usr/bin/cloudflared access ssh --hostname %h
+#  IdentityFile ~/.cloudflared/ssh.smallpotato.party-cf_key
+#  CertificateFile ~/.cloudflared/ssh.smallpotato.party-cf_key-cert.pub
 
-Host gateway
-    Hostname gateway.home-network.io
-    Port 65001
-    User jay
-
-Host ha
-    Hostname ha.home-network.io
-    Port 22
-    User root
-
-Host home
-    Hostname vpn.home-network.io
-    Port 2099
-    User jay
-
-Host jarvis
-    Hostname jarvis.home-network.io
-    Port 22
-    User pi
-
-Host music
-    Hostname music.home-network.io
-    Port 22
-    User volumio
-
-Host retro*
-    Hostname %h.home-network.io
-    Port 22
-    User pi
-
-Host storage
-    Hostname storage.home-network.io
-    Port 22
-    User jay
-
-Host vm-host-*
-    Hostname %h.home-network.io
-    Port 22
-    User jay
-
-##################################################################
-# vps                                                            #
-##################################################################
-Host community
-    Hostname community.learnlinux.tv
-    Port 22
-    User jay
-
-Host *link
-    Hostname learnlinux.link
-    Port 22
-    User jay
-
-Host web
-    Hostname web.learnlinux.tv
-    Port 22
-    User jay
-
-Host wiki
-    Hostname wiki.learnlinux.tv
-    Port 22
-    User jay
+Host debian
+  Hostname 10.0.10.12
+  User jaziel
