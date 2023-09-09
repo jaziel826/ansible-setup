@@ -69,6 +69,7 @@
       regexp: '^EARLYOOM_ARGS="-r 60"'
       line: "EARLYOOM_ARGS=\"-m 5 -r 60 --avoid '(^|/)(init|Xorg|ssh|kdenlive*)$'\""
   notify: restart_earlyoom
+  when: ansible_distribution != "openSUSE Tumbleweed"
 
 
 # distro-specific tasks for ubuntu
