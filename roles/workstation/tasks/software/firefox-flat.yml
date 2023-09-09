@@ -5,4 +5,4 @@
     name: org.mozilla.firefox
     method: user
     state: present
-  when: firefox is defined and firefox == true
+  when: firefox-flat is defined and firefox-flat == true
