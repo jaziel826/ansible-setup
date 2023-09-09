@@ -4,20 +4,17 @@
     name: ansible
     state: latest
 
-<<<<<<< HEAD
 # - name: ansible setup | install required packages
 #   tags: ansible,ansible-setup,packages
 #   package:
 #     name:
 #       - "{{ dconf_package }}"
 #       - "{{ python_psutil_package }}"
-=======
 - name: ansible setup | install required packages
   tags: ansible,ansible-setup,packages
   package:
     name:
       - "{{ python_psutil_package }}"
->>>>>>> b6dfa5c (changed os vars)
 
 # Note: For Arch, the requirement is met by a dependency of systemd, only necessary on Debian-based
 - name: ansible setup | install acl package
