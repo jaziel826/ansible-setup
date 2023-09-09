@@ -3,4 +3,4 @@
   tags: packages,workstation-packages,caffeine
   package:
     name: caffeine
-  when: ansible_distribution != "Archlinux"
+  when: ansible_distribution != ["Archlinux", "openSUSE Tumbleweed"]
