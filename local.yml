@@ -14,6 +14,11 @@
       apt: update_cache=yes
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
+    - name: pre-run | update_cache (openSUSE)
+      tags: always
+      zypper:
+        update_cache: true
+        change_when: False
 
 # run roles
 - hosts: all
