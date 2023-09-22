@@ -11,7 +11,7 @@ jay_user_group: users
 libnotify_package: libnotify4
 smbclient: samba-client
 mpv_package: mpv
-network_manager_openvpn_package: networkiManager-openvpn
+network_manager_openvpn_package: NetworkManager-openvpn
 network_manager_package: NetworkManager
 network_manager_pptp_package: NetworkManager-pptp
 network_manager_vpnc_package: NetworkManager-vpnc
