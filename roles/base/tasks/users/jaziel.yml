@@ -29,6 +29,17 @@
     owner: root
     group: root
     mode: 0440
+  when: "'workstation' is in group_names"
+
+- name: users | jaziel | jaziel | add sudoers file
+  tags: jaziel,settings,simone,sudo,system,users
+  copy:
+    src: users/sudoers_jaziel.workstation
+    dest: /etc/sudoers.d/jaziel
+    owner: root
+    group: root
+    mode: 0440
+  when: "'workstation' is not in group_names"
 
 - name: users | jaziel | create .ssh directory
   tags: dotfiles,jaziel,ssh,users
