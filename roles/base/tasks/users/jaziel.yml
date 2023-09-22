@@ -19,7 +19,6 @@
     comment: "Jaziel Amadiz"
     password: "{{ jaziel_passwd }}"
     shell: /bin/bash
-  when: "'workstation' is not in group_names"
 
 - name: users | jaziel | jaziel | add sudoers file
   tags: jaziel,settings,simone,sudo,system,users
@@ -29,7 +28,7 @@
     owner: root
     group: root
     mode: 0440
-  when: "'workstation' is in group_names"
+  when: inventory_hostname is not in groups["workstation"]
 
 - name: users | jaziel | jaziel | add sudoers file
   tags: jaziel,settings,simone,sudo,system,users
@@ -39,7 +38,7 @@
     owner: root
     group: root
     mode: 0440
-  when: "'workstation' is not in group_names"
+  when: inventory_hostname in groups["workstation"]
 
 - name: users | jaziel | create .ssh directory
   tags: dotfiles,jaziel,ssh,users
