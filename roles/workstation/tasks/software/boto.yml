@@ -5,3 +5,8 @@
     executable: /usr/bin/pip3
     state: latest
     name: boto
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
+
