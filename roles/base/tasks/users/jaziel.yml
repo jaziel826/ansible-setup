@@ -40,6 +40,22 @@
     mode: 0440
   when: inventory_hostname in groups["workstation"]
 
+- name: users| edit sudoers file | comment targetpw
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^Defaults targetpw'
+    line: '## Defaults targetpw'
+    validate: '/usr/sbin/visudo -cf %s'
+
+- name: users| edit sudoers file | comment targetpw
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^ALL   ALL=(ALL) ALL'
+    line: '## ALL   ALL=(ALL) ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+
 - name: users | jaziel | create .ssh directory
   tags: dotfiles,jaziel,ssh,users
   file:
