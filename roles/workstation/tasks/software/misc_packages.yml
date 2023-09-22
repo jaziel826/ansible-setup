@@ -25,7 +25,7 @@
       - pavucontrol
       - protonvpn-gui
       - simplescreenrecorder
-      - smbclient
+      - "{{ smbclient }}"
       - sshpass
       - terminator
       - unrar
