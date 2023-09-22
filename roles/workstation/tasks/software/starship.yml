@@ -1,4 +1,4 @@
-- name: software | install multimedia starship
+- name: software | install starship
   tags: packages,system,system-packages,workstation-packages
   shell: opi -n starship  
   when: starship is defined and starship == true
