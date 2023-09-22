@@ -19,6 +19,7 @@
     comment: "Jaziel Amadiz"
     password: "{{ jaziel_passwd }}"
     shell: /bin/bash
+  when: "'workstation' is not in group_names"
 
 - name: users | jaziel | jaziel | add sudoers file
   tags: jaziel,settings,simone,sudo,system,users
