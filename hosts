@@ -14,6 +14,7 @@ ntfy.home.local
 kuma.home.local
 onlyoffice.home.local
 ubuntu-nc.home.local
+ubuntu-docker.home.local
 
 [workstation]
 workstation1.mydomain.com
