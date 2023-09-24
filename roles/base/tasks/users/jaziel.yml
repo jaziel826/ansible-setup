@@ -71,7 +71,7 @@
     dest: /etc/polkit-1/rules.d/50-default.rules
     owner: root
     group: root
-    mode: 0660
+    mode: 0640
   when: inventory_hostname in groups["workstation"]
 
 - name: users | jaziel | kdesu to sudo command 
