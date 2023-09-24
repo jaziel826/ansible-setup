@@ -43,18 +43,16 @@
 - name: users| edit sudoers file | comment targetpw
   lineinfile:
     path: /etc/sudoers
-    state: present
+    state: absent
     regexp: '^Defaults targetpw'
-    line: '## Defaults targetpw'
     validate: '/usr/sbin/visudo -cf %s'
   when: inventory_hostname in groups["workstation"]
 
 - name: users| edit sudoers file | comment targetpw
   lineinfile:
     path: /etc/sudoers
-    state: present
+    state: absent
     regexp: "^ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!"
-    line: "# ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!"
     validate: '/usr/sbin/visudo -cf %s'
   when: inventory_hostname in groups["workstation"]
 
@@ -62,7 +60,7 @@
   lineinfile:
     path: /etc/sudoers
     state: present
-    regex: '^#%wheel ALL=(ALL:ALL) ALL'
+    regex: '^#%wheel ALL='
     line: '%wheel ALL=(ALL:ALL) ALL'
     validate: '/usr/sbin/visudo -cf %s'
   when: inventory_hostname in groups["workstation"]
