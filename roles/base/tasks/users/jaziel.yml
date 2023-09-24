@@ -52,9 +52,23 @@
   lineinfile:
     path: /etc/sudoers
     state: present
-    regexp: '^ALL   ALL=(ALL) ALL'
-    line: '## ALL   ALL=(ALL) ALL'
+    regexp: "^ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!"
+    line: "# ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!"
     validate: '/usr/sbin/visudo -cf %s'
+
+- name: users | jaziel | add polkit-1 file
+  tags: jaziel,settings,simone,sudo,system,users
+  copy:
+    src: users/50-defaults.rules
+    dest: /etc/polkit-1/rules.d/50-default.rules
+    owner: root
+    group: root
+    mode: 0660
+  when: inventory_hostname is in groups["workstation"]
+
+- name: users | jaziel | kdesu to sudo command 
+  shell: kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
+  when: inventory_hostname is in groups["workstation"]
 
 - name: users | jaziel | create .ssh directory
   tags: dotfiles,jaziel,ssh,users
