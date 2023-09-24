@@ -69,7 +69,7 @@
 - name: users | jaziel | add polkit-1 file
   tags: jaziel,settings,simone,sudo,system,users
   copy:
-    src: users/defaults.rules
+    src: defaults.rules
     dest: /etc/polkit-1/rules.d/50-default.rules
     owner: root
     group: root
