@@ -4,5 +4,5 @@
   zypper:
     name: protonvpn-gui
     state: latest
-  when: protonvpn is defined and protonvpn == true
+  when: protonvpn-gui is defined and protonvpn-gui == true
 
