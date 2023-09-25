@@ -1,4 +1,6 @@
 - name: software | install starship
   tags: packages,system,system-packages,workstation-packages
-  shell: opi -n starship  
+  zypper:
+    state: latest
+    names: starship  
   when: starship is defined and starship == true

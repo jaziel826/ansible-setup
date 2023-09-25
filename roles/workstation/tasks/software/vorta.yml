@@ -1,0 +1,8 @@
+- name: software | vorta | install package
+  tags: packages,vorta,workstation-packages
+  become: true
+  zypper:
+    name: vorta
+    state: latest
+  when: vorta is defined and vorta == true
+

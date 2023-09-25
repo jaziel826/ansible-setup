@@ -37,6 +37,7 @@ firefox: true
 bitwarden: true
 minecraft: true
 signal: true
+vorta: true
 steam: true
 thunderbird: true
 starship: true
@@ -46,6 +47,27 @@ protonvpn-gui: true
 nextcloud-sync: true
 jetbrains-mono-nerd-fonts: true
 onlyoffice: true
+unused_packages:
+  - kaddressbook
+  - kmag
+  - kmail
+  - kmines
+  - kontact
+  - konversation
+  - korganizer
+  - kpatience
+  - kreversi
+  - ksudoku
+  - ktnef
+  - pim-sieve-editor
+  - skanlite
+  - terminator 
+  - tigervnc
+  - xscreensaver
+  - xscreensaver-data
+  - xscreensaver-lang
+  - xf86-input-wacom
+
 # desktop environment selection
 gnome: false
 mate: false
