@@ -2,4 +2,4 @@
   package:
     state: absent
     name: "{{ item }}"
-    loop: "{{ unused_packages }}"
+  with_items: "{{ unused_packages }}"
