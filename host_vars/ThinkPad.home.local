@@ -43,8 +43,8 @@ thunderbird: true
 starship: true
 alacritty: true
 codecs: true
-protonvpn-gui: true
-nextcloud-sync: true
+protonvpn: true
+nextcloud: true
 jetbrains-mono-nerd-fonts: true
 onlyoffice: true
 unused_packages:

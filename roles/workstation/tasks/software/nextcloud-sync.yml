@@ -4,5 +4,5 @@
   zypper:
     name: nextcloud-desktop
     state: latest
-  when: nextcloud-desktop is defined and nextcloud-desktop == true
+  when: nextcloud is defined and nextcloud == true
 
