@@ -71,6 +71,7 @@
   - import_tasks: software/misc_games.yml
   - import_tasks: software/misc_packages.yml
   - import_tasks: software/packer.yml
+  - import_tasks: software/remove.yml
   - import_tasks: software/signal.yml
   - import_tasks: software/starship.yml
   - import_tasks: software/solaar.yml

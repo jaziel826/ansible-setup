@@ -2,5 +2,5 @@
   tags: packages,system,system-packages,workstation-packages
   zypper:
     state: latest
-    names: starship  
+    name: starship  
   when: starship is defined and starship == true
