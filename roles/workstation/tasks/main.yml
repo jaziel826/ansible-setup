@@ -66,6 +66,8 @@
   - import_tasks: software/codecs.yml
   - import_tasks: software/firefox.yml
   - import_tasks: software/protonvpn.yml
+  - import_tasks: software/jetbrain-mono-nerd-fonts.yml
+  - import_tasks: software/protonvpn.yml
   - import_tasks: software/lutris.yml
   - import_tasks: software/minecraft.yml
   - import_tasks: software/misc_games.yml
