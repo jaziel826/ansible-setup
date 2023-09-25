@@ -1,5 +1,5 @@
-- name: software | nextcloud-desktop | install package
-  tags: packages,nextcloud-desktop,workstation-packages
+- name: software | nextcloud | install package
+  tags: packages,nextcloud,workstation-packages
   become: true
   zypper:
     name: nextcloud-desktop

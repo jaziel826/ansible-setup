@@ -1,5 +1,5 @@
-- name: software | protonvpn-gui | install package
-  tags: packages,protonvpn-gui,workstation-packages
+- name: software | protonvpn | install package
+  tags: packages,protonvpn,workstation-packages
   become: true
   zypper:
     name: protonvpn-gui
