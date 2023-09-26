@@ -5,6 +5,7 @@
       - acpid
       - alsa-utils
       - asunder
+      - btop
       - cifs-utils
       - "{{ cups_package }}"
       - "{{ cryptsetup_package }}"

@@ -51,9 +51,13 @@ unused_packages:
   - kaddressbook
   - kmag
   - kmail
+  - kmail-account-wizard
+  - kmailtransport
+  - kdegames-carddeck-default
   - kmines
   - kontact
   - konversation
+  - kmahjongg
   - korganizer
   - kpatience
   - kreversi
