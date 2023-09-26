@@ -45,7 +45,7 @@ alacritty: true
 codecs: true
 protonvpn: true
 nextcloud: true
-jetbrains-mono-nerd-fonts: true
+jetbrains_nerd_fonts: true
 onlyoffice: true
 unused_packages:
   - kaddressbook
