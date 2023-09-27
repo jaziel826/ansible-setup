@@ -1,0 +1,77 @@
+---
+branch: main
+
+ansible_cron_minute: "*/5"
+ssh_port: 22
+ssh_users: "jaziel velociraptor"
+
+# platform-specific
+ansible_python_interpreter: /usr/bin/python3
+microcode_amd_install: true
+microcode_intel_install: false
+dotfiles_repo: "https://github.com/jaziel826/configs.git"
+dotfiles_repo_version: main
+dotfiles_home: "$HOME"
+dotfiles_repo_accept_hostkey: false
+dotfiles_repo_local_destination: "$HOME/repo/.dots"
+dotfiles_files:
+  - bash
+  - vim-server
+  - tmux
+  - lf
+  - nvim
+  - btop
+  - alacritty
+  - starship
+  - wall
+
+
+# app defaults
+#gui_editor: gvim
+terminal_emulator: alacritty
+#web_browser: flatpak run org.mozilla.firefox
+
+# application selection
+autofs: true
+firefox: true
+bitwarden: true
+minecraft: true
+signal: true
+vorta: true
+steam: true
+thunderbird: true
+starship: true
+alacritty: true
+codecs: true
+protonvpn: true
+nextcloud: true
+jetbrains_nerd_fonts: true
+onlyoffice: true
+unused_packages:
+  - kaddressbook
+  - kmag
+  - kmail
+  - kmail-account-wizard
+  - kmailtransport
+  - kdegames-carddeck-default
+  - kmines
+  - kontact
+  - konversation
+  - kmahjongg
+  - korganizer
+  - kpatience
+  - kreversi
+  - ksudoku
+  - ktnef
+  - pim-sieve-editor
+  - skanlite
+  - terminator 
+  - tigervnc
+  - xscreensaver
+  - xscreensaver-data
+  - xscreensaver-lang
+  - xf86-input-wacom
+
+# desktop environment selection
+gnome: false
+mate: false

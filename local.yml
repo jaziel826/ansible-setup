@@ -15,6 +15,20 @@
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
+    - name: pre-run | update_cache (openSUSE)
+      shell: zypper ref
+      when: ansible_distribution == "openSUSE Tumbleweed"
+#       tags: always
+#       zypper: update_cache=yes
+#       change_when: False
+
+    - name: pre-run | update_cache (openSUSE)
+      shell: zypper ref
+      when: ansible_distribution == "openSUSE Tumbleweed"
+#       tags: always
+#       zypper: update_cache=yes
+#       change_when: False
+
 # run roles
 - hosts: all
   tags: base
@@ -22,11 +36,11 @@
   roles:
     - base
 
-# - hosts: workstation
-#   tags: workstation
-#   become: true
-#   roles:
-#     - workstation
+- hosts: workstation
+  tags: workstation
+  become: true
+  roles:
+    - workstation
 
 - hosts: server
   tags: server

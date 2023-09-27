@@ -1,0 +1,6 @@
+- name: software | install starship
+  tags: packages,system,system-packages,workstation-packages
+  zypper:
+    state: latest
+    name: starship  
+  when: starship is defined and starship == true

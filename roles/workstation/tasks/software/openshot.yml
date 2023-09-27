@@ -5,3 +5,8 @@
     mode: '0700'
     owner: jay
     group: jay
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
+

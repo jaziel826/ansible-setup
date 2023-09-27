@@ -3,4 +3,4 @@
   tags: packages,workstation-packages,caffeine
   package:
     name: caffeine
-  when: ansible_distribution != "Archlinux"
+  when: caffeine is defined and caffine == true

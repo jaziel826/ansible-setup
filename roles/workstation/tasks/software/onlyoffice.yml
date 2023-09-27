@@ -1,0 +1,4 @@
+- name: software | install multimedia onlyoffice
+  tags: packages,system,system-packages,workstation-packages
+  shell: opi -n onlyoffice  
+  when: onlyoffice is defined and onlyoffice == true

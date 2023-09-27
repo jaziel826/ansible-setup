@@ -1,0 +1,8 @@
+- name: software | nextcloud | install package
+  tags: packages,nextcloud,workstation-packages
+  become: true
+  zypper:
+    name: nextcloud-desktop
+    state: latest
+  when: nextcloud is defined and nextcloud == true
+

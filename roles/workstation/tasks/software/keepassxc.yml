@@ -5,6 +5,11 @@
     name: org.keepassxc.KeePassXC
     method: user
     state: present
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
+
 
 - name: software | keepassxc | enable autostart
   tags: packages,keepassxc,flatpak,workstation-packages
@@ -14,6 +19,10 @@
     owner: jay
     group: jay
     state: link
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
 
 - name: software | keepassxc | create keepassxc install directory
   tags: packages,keepassxc,flatpak,workstation-packages

@@ -6,10 +6,8 @@
       # - at
       - colordiff
       - curl
-      - "{{ dns_utils_package}}"
       - htop
       - iotop
-      - "{{ lm_sensors_package }}"
       - lsof
       - mosh
       - ncdu

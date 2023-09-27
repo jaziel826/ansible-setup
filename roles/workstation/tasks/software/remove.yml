@@ -1,0 +1,5 @@
+- name: package | remove 
+  package:
+    state: absent
+    name: "{{ item }}"
+  with_items: "{{ unused_packages }}"

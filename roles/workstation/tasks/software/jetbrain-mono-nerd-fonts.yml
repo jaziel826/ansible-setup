@@ -1,0 +1,4 @@
+- name: software | install jetbrains-mono-nerd-fonts
+  tags: packages,system,system-packages,workstation-packages
+  shell: opi -n jetbrains-mono-nerd-fonts  
+  when: jetbrains_nerd_fonts is defined and jetbrains_nerd_fonts == true

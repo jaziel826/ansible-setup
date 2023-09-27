@@ -1,0 +1,8 @@
+- name: software | alacritty | install package
+  tags: packages,alacritty,workstation-packages
+  become: true
+  zypper:
+    name: alacritty
+    state: latest
+  when: alacritty is defined and alacritty == true
+

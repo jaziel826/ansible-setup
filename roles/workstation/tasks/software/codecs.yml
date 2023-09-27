@@ -1,6 +1,4 @@
 - name: software | install multimedia codecs
   tags: packages,system,system-packages,workstation-packages
-  package:
-    name:
-      - "{{ gstreamer_libav_package }}"
-      - "{{ gstreamer_plugins_bad_package }}"
+  shell: opi -n codecs  
+  when: codecs is defined and codecs == true

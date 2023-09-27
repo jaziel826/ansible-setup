@@ -6,6 +6,10 @@
     owner: jay
     group: jay
     mode: 0700
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
 
 - name: software | kdenlive | install package
   get_url:
@@ -14,3 +18,8 @@
     mode: '0700'
     owner: jay
     group: jay
+  when:
+    - ansible_distribution != "Archlinux"
+    - chromium is defined
+    - chromium == true
+
