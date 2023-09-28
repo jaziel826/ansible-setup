@@ -38,7 +38,6 @@ bitwarden: true
 minecraft: true
 signal: true
 vorta: true
-steam: true
 thunderbird: true
 starship: true
 alacritty: true
