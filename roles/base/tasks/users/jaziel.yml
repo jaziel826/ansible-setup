@@ -67,11 +67,17 @@
 - name: users | jaziel | add polkit-1 file
   tags: jaziel,settings,simone,sudo,system,users
   copy:
-    src: users/defaults.rules
+    src: users/{{ item}}.rules
     dest: /etc/polkit-1/rules.d/50-default.rules
     owner: root
     group: root
     mode: 0644
+  with_items: 
+    - 'default'
+    - '60-backlight'
+    - '60-suspend'
+    - '60-networkmanager'
+    - '60-smartctl'
   when: inventory_hostname in groups["workstation"]
 
 - name: users | jaziel | kdesu to sudo command 
