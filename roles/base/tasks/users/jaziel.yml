@@ -67,13 +67,13 @@
 - name: users | jaziel | add polkit-1 file
   tags: jaziel,settings,simone,sudo,system,users
   copy:
-    src: users/{{ item}}.rules
-    dest: /etc/polkit-1/rules.d/50-default.rules
+    src: users/{{ item }}.rules
+    dest: /etc/polkit-1/rules.d/{{ item }}.rules
     owner: root
     group: root
     mode: 0644
   with_items: 
-    - 'default'
+    - '50-defaults'
     - '60-backlight'
     - '60-suspend'
     - '60-networkmanager'

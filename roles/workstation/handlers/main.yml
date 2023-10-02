@@ -5,6 +5,12 @@
     name: autofs
     state: restarted
 
+- name: restart_polkit
+  tags: autofs,system,system setup
+  service:
+    name: polkit
+    state: restarted
+
 - name: restart_earlyoom
   tags: earlyoom,system,system setup,tweaks
   service:
@@ -19,7 +25,7 @@
 
 - name: update_xdg
   tags: users,config,xdg
-  become_user: jay
+  become_user: jaziel
   command: /usr/bin/xdg-user-dirs-update
 
 # GNOME stuff
