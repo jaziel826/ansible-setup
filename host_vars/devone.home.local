@@ -19,7 +19,7 @@ dotfiles_files:
   - vim-server
   - tmux
   - lf
-  - nvim
+#  - nvim
   - btop
   - alacritty
   - starship
