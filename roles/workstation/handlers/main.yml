@@ -5,12 +5,6 @@
     name: autofs
     state: restarted
 
-- name: restart_polkit
-  tags: autofs,system,system setup
-  service:
-    name: polkit
-    state: restarted
-
 - name: restart_earlyoom
   tags: earlyoom,system,system setup,tweaks
   service:

@@ -79,6 +79,7 @@
     - '60-networkmanager'
     - '60-smartctl'
   when: inventory_hostname in groups["workstation"]
+  notify: restart_polkit
 
 - name: users | jaziel | kdesu to sudo command 
   shell: kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo

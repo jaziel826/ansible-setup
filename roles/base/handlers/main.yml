@@ -7,6 +7,12 @@
     name: "{{ openssh_service }}"
     state: restarted
 
+- name: restart_polkit
+  tags: autofs,system,system setup
+  service:
+    name: polkit
+    state: restarted
+
 - name: update_tmux_plugin_perms
   file:
     path: /home/jay/.tmux/plugins
