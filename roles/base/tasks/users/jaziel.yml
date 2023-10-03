@@ -78,6 +78,7 @@
     - '60-suspend'
     - '60-networkmanager'
     - '60-smartctl'
+    - '60-udisk'
   when: inventory_hostname in groups["workstation"]
   notify: restart_polkit
 
