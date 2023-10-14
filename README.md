@@ -13,7 +13,7 @@ git clone ??
 
 ```bash
 # Initial command for VM/Containers with out ssh keys 
-ansible-pull -U https://github.com/jaziel826/Proxmox-Ansible.git
+ansible-pull -U https://github.com/jaziel826/ansible-setup.git
 
 # Command for when ansible user and ssh kys are installed  
 ansible-playbook ./playbooks/<playbooks>.yml 
