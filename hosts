@@ -15,6 +15,7 @@ kuma.home.local
 onlyoffice.home.local
 ubuntu-nc.home.local
 ubuntu-docker.home.local
+proxy
 
 [workstation]
 ThinkPad.home.local

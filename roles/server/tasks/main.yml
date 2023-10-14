@@ -5,7 +5,11 @@
 - block:
   #- import_tasks: nrpe.yml
   - import_tasks: ufw.yml
-  #- import_tasks: qemu-agent.yml
+  - import_tasks: tailscale.yml
+    when:
+      - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+      - tailscale is defined
+      - tailscale == true
   - include_tasks: crowdsec.yml
     when:
       - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
