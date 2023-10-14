@@ -1,13 +1,13 @@
-- name: provision tailscale 
-  artis3n.tailscale:
-    vars:
+# - name: provision tailscale 
+  # artis3n.tailscale:
+    # vars:
      # Example pulling the API key from the env vars on the host running Ansible
-     tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
-     tailscale_args: "--ssh --accept-routes --advertise-exit-node"
+     # tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
+     # tailscale_args: "--ssh --accept-routes --advertise-exit-node"
          #       tailscale_up_skip: true
-  when:
-    - tailscale is defined
-    - tailscale == true
+  # when:
+    # - tailscale is defined
+    # - tailscale == true
 #   - name: Gather package facts
 #     package_facts:
 #       manager: apt
