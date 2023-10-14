@@ -47,7 +47,6 @@
   become: true
   roles:
     - server
-
 # end of run cleanup and reporting
 - hosts: all
   become: true

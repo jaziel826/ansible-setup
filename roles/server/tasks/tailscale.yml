@@ -5,6 +5,9 @@
      tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
      tailscale_args: "--ssh --accept-routes --advertise-exit-node"
          #       tailscale_up_skip: true
+  when:
+    - tailscale is defined
+    - tailscale == true
 #   - name: Gather package facts
 #     package_facts:
 #       manager: apt
