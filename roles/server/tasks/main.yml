@@ -4,10 +4,10 @@
 - name: Include artis3n.tailscale
   include_role: 
     name: artis3n.tailscale
-      vars:
-        # Example pulling the API key from the env vars on the host running Ansible
-        tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
-        tailscale_args: "--ssh --accept-routes --advertise-exit-node"
+  vars:
+    # Example pulling the API key from the env vars on the host running Ansible
+    tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
+    tailscale_args: "--ssh --accept-routes --advertise-exit-node"
 - block:
   #- import_tasks: nrpe.yml
   - import_tasks: ufw.yml
