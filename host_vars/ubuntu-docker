@@ -19,8 +19,9 @@ dotfiles_files:
 linode_instance: false
 microcode_amd_install: false
 microcode_intel_install: false
-proxmox_instance: false
+proxmox_instance: true
 raspberry_pi: false
 
 # server
 unattended_upgrades: true
+tailscale: true
