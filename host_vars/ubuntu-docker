@@ -20,6 +20,7 @@ linode_instance: false
 microcode_amd_install: false
 microcode_intel_install: false
 proxmox_instance: true
+tailscale_args: " --ssh "
 raspberry_pi: false
 
 # server
