@@ -6,8 +6,10 @@
     name: artis3n.tailscale
   vars:
     # Example pulling the API key from the env vars on the host running Ansible
-    tailscale_authkey: "{{ tailscale_auth }}"
+    tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}" 
     tailscale_args: "{{ tailscale_arg }}"
+  environment:
+    TAILSCALE_KEY: "{{ tailscale_auth }}"
   when:
     - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
     - tailscale is defined
