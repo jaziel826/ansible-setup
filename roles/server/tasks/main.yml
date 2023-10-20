@@ -4,8 +4,8 @@
 - name: Include artis3n.tailscale
   include_role: 
     name: artis3n.tailscale
-  environment:
-    TAILSCALE_KEY: "{{ tailscale_auth }}"
+    environment:
+      TAILSCALE_KEY: "{{ tailscale_auth }}"
   vars:
     # Example pulling the API key from the env vars on the host running Ansible
     tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}" 
