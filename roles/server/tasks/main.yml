@@ -2,7 +2,9 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 - name: export TAILSCALE_KEY
-  shell: export 'TAILSCALE_KEY="{{ tailscale_auth }}"'
+  shell: export $TAILSCALE_KEY
+  environment:
+    TAILSCALE_KEY: "{{ tailscale_auth }}"
 
 - name: Include artis3n.tailscale
   include_role: 
