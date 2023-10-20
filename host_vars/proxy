@@ -19,7 +19,7 @@ dotfiles_files:
 linode_instance: true
 microcode_amd_install: false
 microcode_intel_install: false
-tailscale_arg: "--ssh --accept_routes --advertise-exit-node"
+tailscale_arg: "--ssh --accept_routes --advertise-exit-node --reset"
 proxmox_instance: true
 raspberry_pi: false
 
