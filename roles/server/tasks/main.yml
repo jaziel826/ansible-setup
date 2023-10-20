@@ -4,7 +4,7 @@
 - name: export TAILSCALE_KEY
   shell: export $TAILSCALE_KEY
   environment:
-    TAILSCALE_KEY: "{{ tailscale_auth }}"
+    TAILSCALE_KEY: 'TAILSCALE_KEY="{{ tailscale_auth }}"'
 
 - name: Include artis3n.tailscale
   include_role: 
