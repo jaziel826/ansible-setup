@@ -1,6 +1,7 @@
 [lxc]
 ubuntu-nc
 maria
+postgres
 firefly
 onlyoffice
 kuma
