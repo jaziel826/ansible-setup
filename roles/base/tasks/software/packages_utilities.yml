@@ -19,7 +19,7 @@
       - rsync
       - screen
       - sshfs
-      - exa
+      - eza
       - tmux
       - traceroute
       - "{{ vim_package }}"
