@@ -9,22 +9,13 @@ ntfy
 [VM]
 
 [server]
-<<<<<<< Updated upstream
-pve.home.local
-ntfy.home.local
-kuma.home.local
-onlyoffice.home.local
-ubuntu-nc.home.local
-ubuntu-docker.home.local
 proxy
-=======
 pve
 ntfy
 kuma
 onlyoffice
 ubuntu-nc
 ubuntu-docker
->>>>>>> Stashed changes
 
 [workstation]
 ThinkPad
