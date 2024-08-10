@@ -6,6 +6,15 @@
   notify:
     - restart_ufw
 
+- name: ufw | mysql | allow mysql
+  tags: ufw
+  ufw:
+    comment: mysql
+    rule: allow
+    port: '3306'
+  when:
+    - mysql_server is defined
+    - mysql_server == true
 # dns
 - name: ufw | dns | allow dns (tcp)
   tags: ufw
