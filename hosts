@@ -1,4 +1,4 @@
-[lxc]
+[server]
 ubuntu-nc
 mariadb
 postgres
@@ -7,9 +7,6 @@ onlyoffice
 kuma
 vpn
 ntfy
-[VM]
-
-[server]
 proxy
 pve
 ntfy

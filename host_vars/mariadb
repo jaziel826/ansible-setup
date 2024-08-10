@@ -14,6 +14,7 @@ dotfiles_files:
   - vim-server
   - tmux
   - lf
+tailscale_arg: "--ssh --operator=jaziel --reset"
 
 # platform-specific
 linode_instance: false
