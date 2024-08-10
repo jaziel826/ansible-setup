@@ -1,0 +1,3 @@
+[submodule "roles/ansible-role-tailscale"]
+	path = roles/ansible-role-tailscale
+	url = https://github.com/artis3n/ansible-role-tailscale
