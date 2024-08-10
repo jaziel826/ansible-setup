@@ -1,6 +1,6 @@
 [lxc]
 ubuntu-nc
-maria
+mariadb
 postgres
 firefly
 onlyoffice
