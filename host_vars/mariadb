@@ -26,3 +26,4 @@ raspberry_pi: false
 # server
 unattended_upgrades: true
 tailscale: true
+mysql_server: true
