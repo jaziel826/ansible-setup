@@ -9,6 +9,8 @@
     # Example pulling the API key from the env vars on the host running Ansible
     tailscale_authkey: "{{ tailscale_auth_key }}"
     tailscale_args: "{{ tailscale_arg }}"
+    insecurely_log_authkey: true
+    verbose: true
   when:
     - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
     - tailscale is defined
