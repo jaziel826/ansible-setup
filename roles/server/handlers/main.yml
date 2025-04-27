@@ -16,3 +16,9 @@
   service:
     name: ufw
     state: restarted
+
+- name: restart_tailscale
+  tags: tailscale
+  service:
+    name: tailscaled
+    state: restarted
