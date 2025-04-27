@@ -14,7 +14,8 @@ dotfiles_files:
   - vim-server
   - tmux
   - lf
-
+tailscale: true
+tailscale_args: "--ssh "
 # platform-specific
 linode_instance: false
 microcode_amd_install: false
