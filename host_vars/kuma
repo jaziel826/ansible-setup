@@ -21,6 +21,8 @@ microcode_amd_install: false
 microcode_intel_install: false
 proxmox_instance: false
 raspberry_pi: false
+tailscale_args: " --ssh "
 
 # server
 unattended_upgrades: true
+tailscale: true
