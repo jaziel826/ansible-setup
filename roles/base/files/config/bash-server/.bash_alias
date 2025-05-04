@@ -1,0 +1,9 @@
+alias ls='ls -al'
+#alias cat='bat'
+alias v='vim '
+alias pc='protonvpn-cli connect'
+alias pr='protonvpn-cli reconnect'
+alias zj='zellij'
+alias lob='lobster'
+
+
