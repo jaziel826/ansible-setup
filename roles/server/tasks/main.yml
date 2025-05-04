@@ -37,8 +37,8 @@
 
   - include_tasks: caddy.yml
     when:
-      - webserver is defined
-      - webserver == true
+      - web_server is defined
+      - web_server == true
 
   rescue:
     - set_fact: task_failed=true
