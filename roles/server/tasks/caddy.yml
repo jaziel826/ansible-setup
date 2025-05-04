@@ -1,0 +1,15 @@
+- name: update Caddyfile
+  tags: webserver
+  copy:
+    src: caddy/Caddyfile
+    dest: /home/jaziel/docker/caddy/Caddyfile
+    owner: jaziel
+    group: jaziel
+    mode: 0644
+  when: webserver == true
+
+- name: reload caddy
+  docker_container:
+    name: caddy
+    state: restarted
+  when: webserver == true
