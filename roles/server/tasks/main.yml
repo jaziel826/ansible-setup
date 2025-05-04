@@ -34,10 +34,11 @@
       - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
       - unattended_upgrades is defined
       - unattended_upgrades == true
- - include_tasks: caddy.yml
-   when:
-     - webserver is defined
-     - webserver == true
+
+  - include_tasks: caddy.yml
+    when:
+      - webserver is defined
+      - webserver == true
 
   rescue:
     - set_fact: task_failed=true
