@@ -15,7 +15,7 @@ dotfiles_files:
   - tmux
   - lf
 tailscale: true
-tailscale_args: "--ssh "
+tailscale_arg: "--ssh "
 # platform-specific
 linode_instance: false
 microcode_amd_install: false
