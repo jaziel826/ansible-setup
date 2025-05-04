@@ -1,7 +1,7 @@
 ---
 branch: main
 
-ansible_cron_minute: "30"
+ansible_cron_minute: "5"
 ssh_port: 22
 ssh_users: "jaziel velociraptor"
 dotfiles_repo: "https://github.com/jaziel826/configs.git"
