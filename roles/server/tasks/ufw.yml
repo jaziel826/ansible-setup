@@ -238,7 +238,6 @@
     comment: ssh from home network
     rule: allow
     port: ssh
-    src:  96.242.136.24/32
   when:
     - linode_instance is defined
     - linode_instance == true
