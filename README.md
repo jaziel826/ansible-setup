@@ -17,6 +17,10 @@ ansible-pull -U https://github.com/jaziel826/ansible-setup.git
 
 # Command for when ansible user and ssh kys are installed  
 ansible-playbook ./playbooks/<playbooks>.yml 
+
+#Vault encryption 
+ansible-vault encrypt_string password123 -vault-password-file /.vault_key
+## copy output to variable 
 ```
 
 ## Contributing
