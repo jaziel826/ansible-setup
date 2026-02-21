@@ -146,17 +146,17 @@
     - k8s_master is defined
     - k8s_master == true
 
-- name: ufw | k8s | allow nodeport services (master)
+- name: ufw | relay | allow node to act as relay
   tags: ufw
   ufw:
-    comment: k8s master read-only kubelet api
+    comment: allow port for tailscale realy
     rule: allow
-    port: 30000:32767
-    proto: tcp
-    src: 172.16.249.0/24
+    port: 40000
+    proto: udp
+    #src: 172.16.249.0/24
   when:
-    - k8s_worker is defined
-    - k8s_worker == true
+    - relay is defined
+    - relay == true
 
 - name: ufw | k8s | allow kubelet API (worker)
   tags: ufw
