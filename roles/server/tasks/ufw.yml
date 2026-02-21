@@ -151,7 +151,7 @@
   ufw:
     comment: allow port for tailscale realy
     rule: allow
-    port: 40000
+    port: '40000'
     proto: udp
     #src: 172.16.249.0/24
   when:
