@@ -28,3 +28,4 @@ unattended_upgrades: true
 web_server: true
 tailscale: true
 relay: true
+caddy: true
