@@ -1,6 +1,6 @@
 #!/bin/bash
+set -euo pipefail
 
-# options
 ANSIBLEUSER="velociraptor"
 BRANCH="{{ branch | default('master') }}"
 LOGFILE="/var/log/ansible.log"
@@ -8,15 +8,35 @@ REPO="https://github.com/jaziel826/ansible-setup"
 VAULT_KEY="/.vault_key.txt"
 PRECMD="sudo systemd-inhibit --who='ansible-pull' --why='provisioning'"
 
-# check if ansible-pull is already running, and if not, run it
-if pgrep -f ansible-pull; then
-    printf "\n$(date +"%Y-%m-%d %H:%M:%S") A running ansible-pull process was found.\nExiting.\n"\
-        |tee -a $LOGFILE
+log() {
+    printf "\n%s %s\n" "$(date +"%Y-%m-%d %H:%M:%S")" "$1" | tee -a "$LOGFILE"
+}
+
+if pgrep -f ansible-pull > /dev/null; then
+    log "A running ansible-pull process was found. Exiting."
     exit 1
-else
-    if [ ! $1 == "" ]; then
-        $PRECMD sudo -iH -u $ANSIBLEUSER ansible-pull --vault-password-file=$VAULT_KEY -U $REPO -C $BRANCH --tags $1 2>&1
-    else
-        $PRECMD sudo -iH -u $ANSIBLEUSER ansible-pull --vault-password-file=$VAULT_KEY -o -U $REPO -C $BRANCH 2>&1
-    fi
 fi
+
+log "Installing Ansible collections"
+
+sudo -iH -u "$ANSIBLEUSER" ansible-galaxy collection install \
+    -r "$REPO/raw/$BRANCH/collections/requirements.yml" \
+    --force 2>&1 | tee -a "$LOGFILE"
+
+log "Running ansible-pull"
+
+if [ -n "${1:-}" ]; then
+    $PRECMD sudo -iH -u "$ANSIBLEUSER" ansible-pull \
+        --vault-password-file="$VAULT_KEY" \
+        -U "$REPO" \
+        -C "$BRANCH" \
+        --tags "$1" 2>&1 | tee -a "$LOGFILE"
+else
+    $PRECMD sudo -iH -u "$ANSIBLEUSER" ansible-pull \
+        --vault-password-file="$VAULT_KEY" \
+        -o \
+        -U "$REPO" \
+        -C "$BRANCH" 2>&1 | tee -a "$LOGFILE"
+fi
+
+log "ansible-pull completed"
