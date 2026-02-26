@@ -2,27 +2,19 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 
-- name: Include tailscale role
-  include_role: 
-    name: ansible-role-tailscale
-  vars:
-    # Example pulling the API key from the env vars on the host running Ansible
-    tailscale_authkey: "{{ tailscale_auth_key }}"
-    tailscale_args: "{{ tailscale_arg }}"
-    #insecurely_log_authkey: true
-    verbose: true
+- name: Include Tailscale role
+  ansible.builtin.include_role:
+    name: artis3n.tailscale.machine
   when:
     - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
-    - tailscale is defined
     - tailscale == true
+  vars:
+    tailscale_authkey: "{{ tailscale_auth_key }}"
+    tailscale_args: "{{ tailscale_arg }}"
+    verbose: true
 - block:
   #- import_tasks: nrpe.yml
   - import_tasks: ufw.yml
-  - import_tasks: tailscale.yml
-    when:
-      - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
-      - tailscale is defined
-      - tailscale == true
   - include_tasks: crowdsec.yml
     when:
       - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
