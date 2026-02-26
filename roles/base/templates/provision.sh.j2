@@ -7,6 +7,7 @@ LOGFILE="/var/log/ansible.log"
 REPO="https://github.com/jaziel826/ansible-setup"
 VAULT_KEY="/.vault_key.txt"
 PRECMD="sudo systemd-inhibit --who='ansible-pull' --why='provisioning'"
+WORKDIR="/home/$ANSIBLEUSER/.ansible-pull"
 
 log() {
     printf "\n%s %s\n" "$(date +"%Y-%m-%d %H:%M:%S")" "$1" | tee -a "$LOGFILE"
@@ -17,11 +18,19 @@ if pgrep -f ansible-pull > /dev/null; then
     exit 1
 fi
 
-log "Installing Ansible collections"
+log "Starting ansible-pull bootstrap"
 
-sudo -iH -u "$ANSIBLEUSER" ansible-galaxy collection install \
-    -r "$REPO/raw/$BRANCH/collections/requirements.yml" \
-    --force 2>&1 | tee -a "$LOGFILE"
+sudo -u "$ANSIBLEUSER" mkdir -p "$WORKDIR"
+
+log "Cloning/updating repository"
+sudo -iH -u "$ANSIBLEUSER" git clone -b "$BRANCH" "$REPO" "$WORKDIR" 2>/dev/null || \
+sudo -iH -u "$ANSIBLEUSER" git -C "$WORKDIR" pull
+
+if [ -f "$WORKDIR/collections/requirements.yml" ]; then
+    log "Installing Ansible collections"
+    sudo -iH -u "$ANSIBLEUSER" ansible-galaxy collection install \
+        -r "$WORKDIR/collections/requirements.yml" --force
+fi
 
 log "Running ansible-pull"
 
