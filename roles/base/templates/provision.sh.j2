@@ -7,7 +7,7 @@ LOGFILE="/var/log/ansible.log"
 REPO="https://github.com/jaziel826/ansible-setup"
 VAULT_KEY="/.vault_key.txt"
 PRECMD="sudo systemd-inhibit --who='ansible-pull' --why='provisioning'"
-WORKDIR="/home/$ANSIBLEUSER/.ansible"
+WORKDIR="/home/$ANSIBLEUSER/.ansible/pull/localhost"
 
 log() {
     printf "\n%s %s\n" "$(date +"%Y-%m-%d %H:%M:%S")" "$1" | tee -a "$LOGFILE"
