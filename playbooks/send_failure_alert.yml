@@ -1,24 +1,33 @@
 - block:
-  - name: send failure notification via ntfy.sh
-    script: alert.py "Error Message:{{ ansible_failed_task.name }}" "Ansible Pull Failed {{ ansible_hostname }}" "max" "warning" 
-    tags: always
-    args:
-      executable: python3
 
-#     shell:
-#       token: "{{ telegram_token }}"
-#       chat_id: "{{ telegram_chat_id }}"
-#       msg_format: markdown
-#       msg: "⚠️  Ansible provision failed on *{{ ansible_hostname }}*\n\n
-#         *Task*:  {{ ansible_failed_task.name }}\n
-#         *Action*: {{ ansible_failed_task.action }}\n
-#         *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}```"
-    changed_when: False
-
-  rescue:
-    - name: send failure notification via ntfy.sh
-      script: alert.py "Error Message:{{ ansible_failed_task.name }}" "Ansible Pull Failed {{ ansible_hostname }}" "max" "warning" 
+    - name: Send failure notification via Pushover
       tags: always
+      script: >
+        alert.py
+        "Task failed: {{ ansible_failed_task.name }}"
+        "Ansible Pull Failed on {{ ansible_hostname }}"
+        "1"
+        "{{ pushover_user_key }}"
+        "{{ pushover_app_token }}"
+        "{{ pushover_device }}"
       args:
         executable: python3
+      changed_when: false
+      no_log: true
 
+  rescue:
+
+    - name: Send failure notification via Pushover (rescue)
+      tags: always
+      script: >
+        alert.py
+        "Ansible failed but task details unavailable"
+        "Ansible Pull Failed on {{ ansible_hostname }}"
+        "1"
+        "{{ pushover_user_key }}"
+        "{{ pushover_app_token }}"
+        "{{ pushover_device }}"
+      args:
+        executable: python3
+      changed_when: false
+      no_log: true

@@ -1,22 +1,21 @@
 # - name: notify healthchecks.io that the job ran
 #   uri:
 #     url: https://hc-ping.com/{{ healthcheck_uuid }}
-#   changed_when: False
+#   changed_when: false
 #   when: healthcheck_uuid is defined
 
-- name: send completion notification via ntfy
+- name: Send completion notification via Pushover
   tags: always
-  script: alert.py "Ansible Pull Succes {{ ansible_hostname }}" "Ansible-Pull" "low" "+1" 
+  script: >
+    alert.py
+    "Ansible Pull Success on {{ ansible_hostname }}"
+    "Ansible-Pull"
+    "0"
+    "{{ pushover_user_key }}"
+    "{{ pushover_app_token }}"
+    "{{ pushover_device }}"
   args:
     executable: python3
-
-    #token: "{{ telegram_token }}"
-    #chat_id: "{{ telegram_chat_id }}"
-    #msg_format: markdown
-    #msg: "✔️  Ansible provision finished on *{{ ansible_hostname }}*"
-#- name: notify healthchecks.io that the job ran
- # uri:
-  #  url: https://hc-ping.com/{{ healthcheck_uuid }}
-  #changed_when: False
- # when: healthcheck_uuid is defined
+  changed_when: false
+  no_log: true
 
