@@ -314,17 +314,17 @@
     - unifi_controller is defined
     - unifi_controller == true
 
-- name: ufw | unifi | allow stun
+- name: ufw | media | allow docker network
   tags: ufw
   ufw:
-    comment: unifi controller stun
+    comment: allow media docker network
     rule: allow
-    port: '3478'
-    proto: udp
-    src: 172.16.248.0/24
+   # port: '3478'
+   # proto: udp
+    src: 172.29.0.0/24
   when:
-    - unifi_controller is defined
-    - unifi_controller == true
+    - docker_media is defined
+    - docker_media == true
 
 # web server
 - name: ufw | web server | allow http (80)
