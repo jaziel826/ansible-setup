@@ -24,7 +24,7 @@
     state: restarted
 
 - name: reload caddy
-  community.docker.docker_container:
+  docker_container:
     name: caddy
     image: jaziel826/caddy-supper:latest
     state: started
