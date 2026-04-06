@@ -1,4 +1,5 @@
 ---
 collections:
   - name: artis3n.tailscale
+  - name: community.general
 
