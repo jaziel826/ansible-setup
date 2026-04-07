@@ -22,9 +22,30 @@ log "Starting ansible-pull bootstrap"
 
 sudo -u "$ANSIBLEUSER" mkdir -p "$WORKDIR"
 
-log "Cloning/updating repository"
-sudo -iH -u "$ANSIBLEUSER" git clone -b "$BRANCH" "$REPO" "$WORKDIR" 2>/dev/null || \
-sudo -iH -u "$ANSIBLEUSER" git -C "$WORKDIR" pull
+# If the repo doesn't exist yet, clone it and mark as a fresh install
+FRESH_CLONE=false
+if [ ! -d "$WORKDIR/.git" ]; then
+    log "Cloning repository"
+    sudo -iH -u "$ANSIBLEUSER" git clone -b "$BRANCH" "$REPO" "$WORKDIR"
+    FRESH_CLONE=true
+else
+    # Capture commit hash before pulling
+    LOCAL_BEFORE=$(sudo -iH -u "$ANSIBLEUSER" git -C "$WORKDIR" rev-parse HEAD)
+
+    log "Updating repository"
+    sudo -iH -u "$ANSIBLEUSER" git -C "$WORKDIR" pull
+
+    # Capture commit hash after pulling
+    LOCAL_AFTER=$(sudo -iH -u "$ANSIBLEUSER" git -C "$WORKDIR" rev-parse HEAD)
+fi
+
+# Skip ansible-pull if nothing changed and this isn't a fresh clone
+if [ "$FRESH_CLONE" = false ] && [ "$LOCAL_BEFORE" = "$LOCAL_AFTER" ]; then
+    log "No changes detected. Skipping ansible-pull."
+    exit 0
+fi
+
+log "Changes detected. Proceeding with provisioning."
 
 if [ -f "$WORKDIR/collections/requirements.yml" ]; then
     log "Installing Ansible collections"
@@ -43,7 +64,6 @@ if [ -n "${1:-}" ]; then
 else
     $PRECMD sudo -iH -u "$ANSIBLEUSER" ansible-pull \
         --vault-password-file="$VAULT_KEY" \
-        -o \
         -U "$REPO" \
         -C "$BRANCH" 2>&1 | tee -a "$LOGFILE"
 fi
