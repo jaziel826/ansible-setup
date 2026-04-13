@@ -19,7 +19,7 @@ tailscale_oauth_ephemeral: true
 tailscale_oauth_preauthorized: false
 
 # Whether to output debug information during role execution
-verbose: false
+verbose: true
 # Whether to skip 'tailscale up'
 tailscale_up_skip: false
 # Whether to use the stable or unstable upstream Tailscale build.
