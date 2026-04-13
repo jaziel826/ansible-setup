@@ -6,7 +6,7 @@ state: latest
 # Required Node auth key to authenticate to Tailscale
 tailscale_authkey: ""
 # Optional command-line arguments for 'tailscale up'
-tailscale_args: ""
+tailscale_args: "--ssh"
 # Apply provided tags to node
 tailscale_tags: []
 # Set timeout for 'tailscale up' command in seconds
