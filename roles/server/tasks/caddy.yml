@@ -7,4 +7,4 @@
     group: jaziel
     mode: 0644
   when: caddy == true
-  notify: reload caddy
+  #notify: reload caddy

@@ -23,10 +23,10 @@
     name: tailscaled
     state: restarted
 
-- name: reload caddy
-  docker_container:
-    name: caddy
-    image: jaziel826/caddy-supper:latest
-    state: started
-    restart: yes
+# - name: reload caddy
+#   docker_container:
+#     name: caddy
+#     image: jaziel826/caddy-supper:latest
+#     state: started
+#     restart: yes
 
