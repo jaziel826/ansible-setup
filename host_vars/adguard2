@@ -15,4 +15,4 @@ tailscale_arg: " --ssh "
 
 # server
 unattended_upgrades: true
-#tailscale: true
+tailscale: false
