@@ -15,4 +15,6 @@ tailscale_arg: " --ssh "
 
 # server
 unattended_upgrades: true
-tailscale: false
+tailscale: true
+dns_server: true
+web_server: true
