@@ -113,7 +113,7 @@
 
 - name: Install | Build the final tailscale_args
   ansible.builtin.set_fact:
-    tailscale_args_string: "{{ tailscale_args }} {{ tailscale_tags_string | trim }} --timeout={{ tailscale_up_timeout | trim }}s"
+    tailscale_args_string: "{{ tailscale_args }}  --timeout={{ tailscale_up_timeout | trim }}s" #{{ tailscale_tags_string | trim }}
 
 - name: Install | Final `tailscale up` arguments string
   ansible.builtin.debug:
@@ -131,7 +131,7 @@
 
 - name: Install | Bring Tailscale Up
   become: true
-  ansible.builtin.command: "tailscale up {{ tailscale_args_string |--ssh }} --authkey={{ tailscale_authkey_string | trim }}"
+  ansible.builtin.command: "tailscale up {{ tailscale_args_string | trim }} --authkey={{ tailscale_authkey_string | trim }}"
   # Since the auth key is included in this task's output, we do not want to log output
   no_log: "{{ not (insecurely_log_authkey | bool) }}"
   changed_when: true
