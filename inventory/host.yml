@@ -1,15 +1,26 @@
-[server]
-ubuntu-nc.home.local
-maria.home.local
-onlyoffice
-kuma
-adguard.home.local
-adguard2.home.local
-vpn
-ntfy
-proxy.home.local
-pve.home.local
-ntfy
-kuma
-onlyoffice
-ubuntu-docker.home.local
+all:
+  children:
+    server:
+      hosts:
+        ubuntu-nc:
+          ansible_host: ubuntu-nc.home.local
+        maria:
+          ansible_host: maria.home.local
+        onlyoffice:
+          ansible_host: onlyoffice.home.local
+        kuma:
+          ansible_host: kuma.home.local
+        adguard:
+          ansible_host: adguard.home.local
+        adguard2:
+          ansible_host: adguard2.home.local
+        vpn:
+          ansible_host: vpn.home.local
+        ntfy:
+          ansible_host: ntfy.home.local
+        proxy:
+          ansible_host: proxy.home.local
+        pve:
+          ansible_host: pve.home.local
+        ubuntu-docker:
+          ansible_host: ubuntu-docker.home.local
