@@ -2,9 +2,10 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 
-- name: Include Tailscale role
-  ansible.builtin.include_role:
-    name: tailscale_legacy
+#- name: Include Tailscale role
+ # ansible.builtin.include_role:
+ #  name: tailscale_legacy
+- include_role: artis3n.tailscale.machine
   when:
     - ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
     - tailscale == true
