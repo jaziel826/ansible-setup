@@ -1,5 +1,5 @@
 - name: update Caddyfile
-  tags: webserver
+  tags: webserver,caddy
   copy:
     src: caddy/Caddyfile
     dest: /home/jaziel/docker/caddy/Caddyfile
@@ -7,4 +7,4 @@
     group: jaziel
     mode: 0644
   when: caddy == true
-  #notify: reload caddy
+  notify: reload caddy

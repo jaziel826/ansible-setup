@@ -1,7 +1,8 @@
 ---
 collections:
   - name: artis3n.tailscale
-  #  version: "1.0.0"
+    #version: "1.0.0"
   - name: community.general
     #version: "7.5.5"
+  - name: community.docker
 
