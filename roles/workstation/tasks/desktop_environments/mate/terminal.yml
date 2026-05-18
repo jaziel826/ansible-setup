@@ -5,7 +5,7 @@
     #    key: "/org/mate/terminal/profiles/b1dcc9dd-5262-4d8d-a863-c897e6d979b9/{{ item.key }}"
     key: "/org/mate/terminal/profiles/default/{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: background-color, value: "'#000000000000'" }
     - { key: background-darkness, value: "0.90000000000000002" }
     - { key: background-type, value: "'transparent'" }

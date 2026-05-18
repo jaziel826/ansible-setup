@@ -11,7 +11,7 @@
   dconf:
     key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/{{ item.key }}"
     value: "{{ item.value}}"
-  with_items:
+  loop:
     #- { key: background-color, value: "'rgb(0,0,0)'" }
     - { key: default-size-columns, value: "120" }
     #- { key: foreground-color, value: "'rgb(170,170,170)'" }

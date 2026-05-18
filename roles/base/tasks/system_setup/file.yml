@@ -96,4 +96,4 @@
     package: "{{ item }}"
     dir: "{{ dotfiles_repo_local_destination }}"
     target: $HOME
-  with_items: "{{ dotfiles_files }}"
+  loop: "{{ dotfiles_files }}"

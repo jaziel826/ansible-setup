@@ -33,7 +33,7 @@
     owner: root
     group: root
     mode: 0755
-  with_items:
+  loop:
     - check_hddtemp
     - check_md_raid
     - check_mem
@@ -63,7 +63,7 @@
   file:
     path: /etc/nagios/{{ item }}
     state: absent
-  with_items:
+  loop:
     - nrpe_local.cfg
     - nrpe.d
   when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]

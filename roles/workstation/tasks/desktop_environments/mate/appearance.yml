@@ -26,7 +26,7 @@
   tags: mate,mate-wallpaper
   become_user: jay
   dconf: key="/org/mate/desktop/background/{{ item.key }}" value={{ item.value}}
-  with_items:
+  loop:
     - { key: "color-shading-type", value: "'vertical-gradient'" }
     - { key: "picture-filename", value: "'/usr/share/backgrounds/cosmos/background-1.xml'" }
     - { key: "picture-options", value: "'zoom'" }

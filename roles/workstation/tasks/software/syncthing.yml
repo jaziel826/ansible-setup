@@ -7,7 +7,7 @@
     owner: jay
     group: jay
     mode: 0700
-  with_items:
+  loop:
     - { dir: bin }
     - { dir: desktop }
     - { dir: documents }
@@ -24,7 +24,7 @@
     owner: jay
     group: jay
     mode: 0600
-  with_items:
+  loop:
     - { dir: bin }
     - { dir: desktop }
     - { dir: documents }
@@ -108,7 +108,7 @@
 - name: software | syncthing | start and enable syncthing
   tags: syncthing
   command: "{{ item }}"
-  with_items:
+  loop:
     - systemctl enable syncthing@jay
     - systemctl restart syncthing@jay
   when: syncthing_installed.changed

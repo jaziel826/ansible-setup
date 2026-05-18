@@ -7,8 +7,8 @@
   tags: dotfiles,velociraptor,ssh,ssh-keys,users
   authorized_key:
     user: velociraptor
-    key: "{{ item }}"
-  with_file:
+    key: "{{ lookup('file', item) }}"
+  loop:
     - users/velociraptor/ssh/velociraptor_id_ed25519.pub
     - users/velociraptor/ssh/ansible_id_ed25519.pub
 

@@ -11,7 +11,7 @@
   dconf:
     key: "/org/mate/marco/workspace-names/name-{{ item.number }}"
     value: "'{{ item.name }}'"
-  with_items:
+  loop:
     - { number: 1, name: mail }
     - { number: 2, name: chat }
     - { number: 3, name: browse }

@@ -4,7 +4,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom0/name", value: "'browser'" }
     - { key: "/org/mate/desktop/keybindings/custom0/binding", value: "'<Mod4>b'" }
     - { key: "/org/mate/desktop/keybindings/custom0/action", value: "'{{ web_browser }}'" }
@@ -16,7 +16,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom0/name", value: "'browser'" }
     - { key: "/org/mate/desktop/keybindings/custom0/binding", value: "'<Mod4>b'" }
     - { key: "/org/mate/desktop/keybindings/custom0/action", value: "'{{ firefox }}'" }
@@ -28,7 +28,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom1/name", value: "'browser-alt'" }
     - { key: "/org/mate/desktop/keybindings/custom1/binding", value: "'<Shift><Mod4>b'" }
     - { key: "/org/mate/desktop/keybindings/custom1/action", value: "'/usr/bin/google-chrome'" }
@@ -39,7 +39,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom2/name", value: "'file manager'" }
     - { key: "/org/mate/desktop/keybindings/custom2/binding", value: "'<Mod4>f'" }
     - { key: "/org/mate/desktop/keybindings/custom2/action", value: "'caja --no-desktop /home/jay'" }
@@ -50,7 +50,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom3/name", value: "'bpytop'" }
     - { key: "/org/mate/desktop/keybindings/custom3/binding", value: "'<Mod4>r'" }
     - { key: "/org/mate/desktop/keybindings/custom3/action", value: "'{{ terminal_emulator }} -e bpytop'" }
@@ -62,7 +62,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom3/name", value: "'bpytop'" }
     - { key: "/org/mate/desktop/keybindings/custom3/binding", value: "'<Mod4>r'" }
     - { key: "/org/mate/desktop/keybindings/custom3/action", value: "'mate-terminal -e bpytop'" }
@@ -74,7 +74,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom4/name", value: "'keepass'" }
     - { key: "/org/mate/desktop/keybindings/custom4/binding", value: "'<Mod4>k'" }
     - { key: "/org/mate/desktop/keybindings/custom4/action", value: "'flatpak run org.keepassxc.KeePassXC'" }
@@ -85,7 +85,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom5/name", value: "'screenshot'" }
     - { key: "/org/mate/desktop/keybindings/custom5/binding", value: "'<Super>p'" }
     - { key: "/org/mate/desktop/keybindings/custom5/command", value: "'mate-screenshot -w --border-effect=shadow'" }
@@ -96,7 +96,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom6/name", value: "'screenshot-area'" }
     - { key: "/org/mate/desktop/keybindings/custom6/binding", value: "'<Super>p'" }
     - { key: "/org/mate/desktop/keybindings/custom6/command", value: "'mate-screenshot -a'" }
@@ -107,7 +107,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom7/name", value: "'terminal'" }
     - { key: "/org/mate/desktop/keybindings/custom7/binding", value: "'<Mod4>t'" }
     - { key: "/org/mate/desktop/keybindings/custom7/action", value: "'{{ terminal_emulator }}'" }
@@ -119,7 +119,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom7/name", value: "'terminal'" }
     - { key: "/org/mate/desktop/keybindings/custom7/binding", value: "'<Mod4>t'" }
     - { key: "/org/mate/desktop/keybindings/custom7/action", value: "'terminator'" }
@@ -131,7 +131,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom8/name", value: "'text editor'" }
     - { key: "/org/mate/desktop/keybindings/custom8/binding", value: "'<Mod4>e'" }
     - { key: "/org/mate/desktop/keybindings/custom8/action", value: "'gui_editor'" }
@@ -143,7 +143,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom8/name", value: "'text editor'" }
     - { key: "/org/mate/desktop/keybindings/custom8/binding", value: "'<Mod4>e'" }
     - { key: "/org/mate/desktop/keybindings/custom8/action", value: "'pluma'" }
@@ -155,7 +155,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom9/name", value: "'tmux'" }
     - { key: "/org/mate/desktop/keybindings/custom9/binding", value: "'<Shift><Mod4>t'" }
     - { key: "/org/mate/desktop/keybindings/custom9/action", value: "'{{ terminal_emulator }} -e tmux'" }
@@ -167,7 +167,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/keybindings/custom9/name", value: "'tmux'" }
     - { key: "/org/mate/desktop/keybindings/custom9/binding", value: "'<Shift><Mod4>t'" }
     - { key: "/org/mate/desktop/keybindings/custom9/action", value: "'mate-terminal -e tmux'" }
@@ -179,7 +179,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/marco/global-keybindings/switch-to-workspace-left", value: "'<Primary>Left'" }
     - { key: "/org/mate/marco/global-keybindings/switch-to-workspace-right", value: "'<Primary>Right'" }
     - { key: "/org/mate/marco/global-keybindings/switch-to-workspace-1", value: "'<Primary>1'" }
@@ -195,7 +195,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/marco/window-keybindings/move-to-workspace-left", value: "'<Primary><Shift>Left'" }
     - { key: "/org/mate/marco/window-keybindings/move-to-workspace-right", value: "'<Primary><Shift>Right'" }
 
@@ -205,7 +205,7 @@
   dconf:
       key: "{{ item.key }}"
       value: "{{ item.value }}"
-  with_items:
+  loop:
     - { key: "/org/mate/marco/window-keybindings/maximize", value: "'<Mod4>Up'" }
     - { key: "/org/mate/marco/window-keybindings/tile-to-side-e", value: "'<Mod4>Right'" }
     - { key: "/org/mate/marco/window-keybindings/tile-to-side-w", value: "'<Mod4>Left'" }

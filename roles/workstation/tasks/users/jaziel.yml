@@ -2,7 +2,7 @@
   file:
     path: /home/jaziel/{{ item }}
     state: absent
-  with_items:
+  loop:
     - examples.desktop
     - Desktop
     - Documents
@@ -21,7 +21,7 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-  with_items:
+  loop:
     - { dir: .config }
     - { dir: .config/autostart }
       #    - { dir: .config/bpytop }
@@ -55,7 +55,7 @@
     owner: jaziel
     group: jaziel
     mode: 0600
-  with_items:
+  loop:
     #- { src: 'asunder', dest: '.asunder' }
       #- { src: 'bpytop.conf', dest: '.config/bpytop/bpytop.conf' }
       #- { src: 'directory_bookmarks', dest: '.config/gtk-3.0/bookmarks' }

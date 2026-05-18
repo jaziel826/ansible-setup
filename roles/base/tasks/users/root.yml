@@ -10,7 +10,7 @@
     owner: root
     group: root
     mode: 0700
-  with_items:
+  loop:
       - { dir: '.vim' }
       - { dir: '.vim/colors' }
   tags: dotfiles
@@ -22,7 +22,7 @@
     owner: root
     group: root
     mode: 0600
-  with_items:
+  loop:
       - { src: 'bash/bashrc', dest: '.bashrc' }
       - { src: 'bash/bash_profile', dest: '.bash_profile' }
       - { src: 'bash/profile', dest: '.profile' }

@@ -72,7 +72,7 @@
     owner: root
     group: root
     mode: 0644
-  with_items: 
+  loop: 
     - '50-defaults'
     - '60-backlight'
     - '60-suspend'
@@ -95,15 +95,15 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-  with_items:
+  loop:
     - { dir: '/home/jaziel/.ssh' }
 
 - name: users | jaziel | add public key
   tags: dotfiles,jaziel,ssh,ssh-keys,users
   authorized_key:
     user: jaziel
-    key: "{{ item }}"
-  with_file:
+    key: "{{ lookup('file', item) }}"
+  loop:
     - users/jaziel/ssh/jaziel_id_ed25519.pub
     - users/jaziel/ssh/ansible_id_ed25519.pub
 

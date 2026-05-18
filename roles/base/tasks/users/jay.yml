@@ -32,15 +32,15 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-  with_items:
+  loop:
     - { dir: '/home/jaziel/.ssh' }
 
 - name: users | jaziel | add public key
   tags: dotfiles,jaziel,ssh,ssh-keys,users
   authorized_key:
     user: jaziel
-    key: "{{ item }}"
-  with_file:
+    key: "{{ lookup('file', item) }}"
+  loop:
     - users/jaziel/ssh/jaziel_id_ed25519.pub
 
 - name: users | jaziel | create config directories
@@ -51,7 +51,7 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-  with_items:
+  loop:
     - { dir: '.bash' }
     - { dir: '.config' }
     - { dir: '.config/htop' }
@@ -94,7 +94,7 @@
     owner: jaziel
     group: jaziel
     mode: 0600
-  with_items:
+  loop:
     - { src: 'bash/bash_aliases', dest: '.bash/bash_aliases' }
     - { src: 'bash/bash_profile', dest: '.bash_profile' }
     - { src: 'bash/bash_prompt', dest: '.bash/bash_prompt' }
@@ -140,7 +140,7 @@
     owner: jaziel
     group: jaziel
     mode: 0600
-  with_items:
+  loop:
     - { src: 'aliases.zsh' }
     - { src: 'bindkey.zsh' }
     - { src: 'completion.zsh' }
@@ -161,7 +161,7 @@
     owner: jaziel
     group: jaziel
     mode: 0600
-  with_items:
+  loop:
     - { src: 'cmake.vim' }
     - { src: 'cpp.vim' }
     - { src: 'html.vim' }
@@ -179,7 +179,7 @@
     owner: jaziel
     group: jaziel
     mode: 0600
-  with_items:
+  loop:
     - { src: 'bubblegum-256-dark.vim' }
     - { src: 'darktango.vim' }
     - { src: 'jellybeans.vim' }
@@ -194,7 +194,7 @@
     owner: jaziel
     group: jaziel
     mode: 0700
-  with_items:
+  loop:
     - { src: 'pathogen.vim', dest: '/home/jaziel/.vim/autoload/pathogen.vim' }
 
 - name: users | jaziel | checkout git repositories
@@ -204,7 +204,7 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     force: yes
-  with_items:
+  loop:
     - { repo: 'https://github.com/ctrlpvim/ctrlp.vim.git', dest: '/home/jaziel/.vim/bundle/ctrlp.vim' }
     - { repo: 'https://github.com/davidhalter/jedi-vim.git', dest: '/home/jaziel/.vim/bundle/jedi-vim' }
     - { repo: 'https://github.com/pearofducks/ansible-vim', dest: '/home/jaziel/.vim/bundle/ansible-vim' }

@@ -4,7 +4,7 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value}}"
-  with_items:
+  loop:
     - { key: "/org/mate/desktop/peripherals/touchpad/natural-scroll", value: "true" }
     - { key: "/org/mate/desktop/peripherals/touchpad/scroll-method", value: "'2'" }
 
